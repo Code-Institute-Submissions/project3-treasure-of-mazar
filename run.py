@@ -1,6 +1,7 @@
 import random
 import time
 import sys
+import os
 
 
 def introduction():
@@ -53,12 +54,13 @@ def start_game():
     their name before beginning.
     """
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
-    if start_choice.lower() == "yes":
+    if start_choice.lower().strip() == "yes":
         player_name = input("What is your name?\n")
         print(f"Welcome {player_name}. Your adventure awaits!\n")
-    elif start_choice.lower() == "no":
+    elif start_choice.lower().strip() == "no":
         print("Very well... Please take your time.")
         time.sleep(5)
+        os.system('cls||clear')
         introduction()
     else:
         print("Please type Yes or no!")
