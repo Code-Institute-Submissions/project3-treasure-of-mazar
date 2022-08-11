@@ -4,12 +4,12 @@ import sys
 import os
 
 
-class Player:
+class PlayerAttributes:
     def __init__(self, name):
         self.name = name
 
 
-player_attributes = Player('')
+player = PlayerAttributes('')
 
 
 def introduction():
@@ -17,6 +17,7 @@ def introduction():
     Opens the game with the title screen and introduction
     to the story of the game.
     """
+    os.system('cls||clear')
     print()
     print("""
  _____                                          __  ___  ___                    
@@ -63,8 +64,8 @@ def start_game():
     """
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
     if start_choice.lower().strip() == "yes":
-        player_attributes.name = input("What is your name?\n")
-        print(f"Welcome {player_attributes.name}. Your adventure awaits!\n")
+        player.name = input("What is your name?\n")
+        print(f"Welcome {player.name}. Your adventure awaits!\n")
         begin_adventure()
     elif start_choice.lower().strip() == "no":
         print("Very well... Please take your time.")
@@ -85,17 +86,19 @@ def begin_adventure():
     print("Hearing the rumours of the tomb of Mazar, you set off in search of fortune.\n")
     print("You arrive at a misty ruin in a forest where the air is still.\n")
     print("Shivers run down your spine as you see a great doorway to a tomb.\n")
-    print(f"{player_attributes.name}: 'This must be it... The tomb of Mazar!'\n")
-    print(f"{player_attributes.name}: 'Somewhere inside is the fabled Treasure of Mazar...'\n")
-    print(f"{player_attributes.name}: 'If I find that, I could live like a king!'\n")
-    print(f"{player_attributes.name}: 'But then again, nobody has ever come out alive...'\n")
-    print(f"{player_attributes.name}: 'Should I really risk my life for this?'\n")
+    print(f"{player.name}: 'This must be it... The tomb of Mazar!'\n")
+    print(f"{player.name}: 'Somewhere inside is the fabled Treasure of Mazar...'\n")
+    print(f"{player.name}: 'If I find that, I could live like a king!'\n")
+    print(f"{player.name}: 'But then again, nobody has ever come out alive...'\n")
+    print(f"{player.name}: 'Should I really risk my life for this?'\n")
     enter_choice = input("Do you want to enter the tomb? (Yes/No)\n")
     if enter_choice.lower().strip() == "yes":
-        print(f"{player_attributes.name}: 'There's no turning back now! Here I go!'\n")
+        print(f"{player.name}: 'There's no turning back now! Here I go!'\n")
         print("You push open the great tomb doors and make your way into the depths below.\n")
+        enter_tomb()
     elif enter_choice.lower().strip() == "no":
-        print(f"{player_attributes.name}: 'No... I can't do this. My life is more valuable than any treasure.'\n")
+        print(f"{player.name}: 'No... I can't do this. My life is more valuable than any treasure.'\n")
+        end_1()
     else:
         print("Please type Yes or No!")
         time.sleep(2)
@@ -123,13 +126,35 @@ def begin_adventure():
 #def path_6():
 
 
-#def try_again(): 
+def try_again():
+    """
+    Asks the user if they wish to play again and takes
+    their input. Runs the introduction again if they
+    choose yes, and ends the game if they choose no.
+    """
+    play_again = input("Do you wish to play again? (Yes/No)\n")
+    if play_again.lower().strip() == "yes":
+        introduction()
+    elif play_again.lower().strip() == "no":
+        print("Thank you for playing!")
+    else:
+        print("Please type Yes or No!")
 
 
 #def death():
 
 
-#def end_1():
+def end_1():
+    """
+    Displays ending 1.
+    """
+    print()
+    print("You decide to turn back and live another day.\n")
+    print("The treasure was tempting, but it wasn't worth risking your life.\n")
+    print("You make your way back home to your family and friends.\n")
+    print("And think about what the future has in store for you...\n")
+    print("------ENDING 1------\n")
+    try_again()
 
 
 #def end_2():
