@@ -5,11 +5,12 @@ import os
 
 
 class PlayerAttributes:
-    def __init__(self, name):
+    def __init__(self, name, location):
         self.name = name
+        self.location = location
 
 
-player = PlayerAttributes('')
+player = PlayerAttributes('', '')
 
 
 def introduction():
@@ -105,11 +106,47 @@ def begin_adventure():
         begin_adventure()
 
 
-#def enter_tomb():
+def enter_tomb():
+    """
+    Displays the story if the player enters the tomb
+    and sets the player location to Tomb. Runs the path_choice
+    function.
+    """
+    print()
+    print("As you enter the great tomb, a sense of dread washes over you.\n")
+    print("You notice piles of bones litter the room around you.\n")
+    print("The path ahead is dark and only lit by the light outside.\n")
+    print("You pull out your torch as you continue forward.\n")
+    print(f"{player.name}: 'Here I go... Into the dark unknown...'\n")
+    print("You walk the dimly lit passage, your footsteps echoing.\n")
+    print("Suddenly, you come to a fork in the road!\n")
+    print("To the left appears to be a dim room with a large door.\n")
+    print("To the right, you see a dark room filled with pots.\n")
+    print(f"{player.name}: 'Hmm... Which path should I take?'\n")
+    player.location = "Tomb"
+    time.sleep(5)
+    path_choice()
 
 
-#def path_1():
+def path_choice():
+    """
+    Gives the player a choice between paths and runs the
+    function for the correct path depending on input and player
+    location.
+    """
+    path = input("Which path do you take? (Left/Right)\n")
+    if path.lower().strip() == "left":
+        if player.location == "Tomb":
+            path_1()
+    elif path.lower().strip() == "right":
+        if player.location == "Tomb":
+            path_2()
+        
 
+def path_1():
+    print()
+    print("You enter the dim room with an imposing large door\n")
+    
 
 #def path_2():
 
