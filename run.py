@@ -141,26 +141,63 @@ def path_choice():
     elif path.lower().strip() == "right":
         if player.location == "Tomb":
             path_2()
+    else:
+        print("Please enter either Left or Right!")
+        path_choice()
         
 
 def path_1():
+    """
+    Displays the story for and decisions for path 1. Sets
+    the player location to path 1.
+    """
     print()
-    print("You enter the dim room with an imposing large door\n")
-    
+    player.location = "Path 1"
+    print("You enter the dim room with an imposing, large door\n")
+    print("The door appears to be made of stone, and has two large handles.\n")
+    print("Above the door sits a ghastly stone face staring down at you.\n")
+    print(f"{player.name}: 'Creepy... It looks like it's judging me.'\n")
+    print(f"{player.name}: 'Should I try to open the door or go back the other way?'\n")
+    door_choice = input("Open the door? (Yes/No)\n")
+    if door_choice.lower().strip() == "yes":
+        print(f"{player.name}: 'What's the worst that can happen?'\n")
+        print("You try to pull on the door handles...\n")
+        print("The handles are cold and heavy and the door refuses to budge.\n")
+        print("Suddenly a loud voice booms through the room!\n")
+        print("'FOOLISH MORTAL! Who dares disturb this tomb?'\n")
+        print("In a panic, you look around the room, wondering where the voice came from.\n")
+        print("You see the statue above the door staring at you with red eyes!\n")
+        print(f"{player.name}: 'Um, my name is {player.name}!'\n")
+        print(f"'Very well, {player.name.upper()}! Answer my riddle and you may pass.'\n")
+        print("'But fail, and you will be reduced to ash where you stand!'\n")
+        print("You try to move, but you seem to be frozen in place!\n")
+        print(f"{player.name}: I guess I have no choice...\n")
+        print(f"{player.name}: 'What is your riddle?'\n")
+        print("'Answer me this:'\n")
+    if door_choice.lower().strip() == "no":
+        print(f"{player.name}: 'I think I preferred the other room...'\n")
+        print("You decide to turn around and head back to the room with pots.\n")
+        time.sleep(2)
+        path_2()
+    else:
+        print("Please type Yes or No!")
+        time.sleep(2)
+        path_1()
 
-#def path_2():
+
+def path_2():
 
 
-#def path_3():
+def path_3():
 
 
-#def path_4():
+def path_4():
 
 
-#def path_5():
+def path_5():
 
 
-#def path_6():
+def path_6():
 
 
 def try_again():
@@ -178,7 +215,7 @@ def try_again():
         print("Please type Yes or No!")
 
 
-#def death():
+def death():
 
 
 def end_1():
@@ -194,13 +231,13 @@ def end_1():
     try_again()
 
 
-#def end_2():
+def end_2():
 
 
-#def end_3():
+def end_3():
 
 
-#def end_4():
+def end_4():
 
 
 introduction()
