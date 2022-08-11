@@ -67,4 +67,50 @@ def start_game():
         start_game()
 
 
+def begin_adventure():
+    """
+    Sets the beginning of the story and provides the choice
+    between entering the tomb or not.
+    """
+    
+
+def enter_tomb():
+
+
+def path_1():
+
+
+def path_2():
+
+
+def path_3():
+
+
+def path_4():
+
+
+def path_5():
+
+
+def path_6():
+
+
+def try_again(): 
+
+
+def death():
+
+
+def end_1():
+
+
+def end_2():
+
+
+def end_3():
+
+
+def end_4():
+
+
 introduction()
