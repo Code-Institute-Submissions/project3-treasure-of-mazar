@@ -14,6 +14,14 @@ class PlayerAttributes:
 player = PlayerAttributes('', '', False)
 
 
+class StatueWeapons:
+    def __init__(self, weapons):
+        self.weapons = weapons
+
+
+statue_weapons = StatueWeapons('')
+
+
 def introduction():
     """
     Opens the game with the title screen and introduction
@@ -66,6 +74,9 @@ def start_game():
     to default.
     """
     player.dagger = False
+    weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
+    statue_weapons.weapons = random.choice(weapon_combos)
+    
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
     if start_choice.lower().strip() == "yes":
         player.name = input("What is your name?\n")
@@ -114,6 +125,8 @@ def enter_tomb():
     and sets the player location to Tomb. Runs the path_choice
     function.
     """
+    player.location = "Tomb"
+
     print()
     print("As you enter the great tomb, a sense of dread washes over you.\n")
     print("You notice piles of bones litter the room around you.\n")
@@ -125,8 +138,6 @@ def enter_tomb():
     print("To the left appears to be a dim room with a large door.\n")
     print("To the right, you see a dark room filled with pots.\n")
     print(f"{player.name}: 'Hmm... Which path should I take?'\n")
-    player.location = "Tomb"
-    #time.sleep(5)
     path_choice()
 
 
@@ -157,8 +168,9 @@ def path_1():
     Displays the story for and decisions for path 1. Sets
     the player location to path 1.
     """
-    print()
     player.location = "Path 1"
+
+    print()
     print("You enter the dim room with an imposing, large door\n")
     print("The door appears to be made of stone, and has two large handles.\n")
     print("Above the door sits a ghastly stone face staring down at you.\n")
@@ -196,8 +208,9 @@ def path_2():
     Displays the story and decisions for path 2. Sets
     the player location to path 2.
     """
-    print()
     player.location = "Path 2"
+
+    print()
     print("You enter a dark room filled with strange stone pots.\n")
     print(f"{player.name}: 'What's up with these pots? I can't see inside them.'\n")
     print("Inspecting the pots with your torch, they appear pitch black inside.\n")
@@ -214,7 +227,6 @@ def path_3():
     Displays the story and decisions for path 3. Sets
     the player location to path 3.
     """
-
 
 
 def path_4():
@@ -258,6 +270,7 @@ def path_6():
     the player location to path 6.
     """
 
+
 def pot_choice():
     """
     Asks the user for their input on whether they wish
@@ -294,12 +307,13 @@ def troll_choice():
         choice = input("Choose an option: (1/2)\n")
     if choice.strip() == "1":
         print("You try to sneak around the troll.\n")
+        print("As you get close, the troll begins to grumble...\n")
         sneak_chance = random.randrange(1,5)
-        print(sneak_chance)
         if sneak_chance > 3:
             print("You successfully sneak past the troll!\n")
             print(f"{player.name}: 'Phew! that was close!'\n")
             print("You continue on through the tomb.\n")
+            statue_room()
         elif sneak_chance <= 3:
             print("You fail to sneak past the troll and it wakes up!\n")
             print("The troll grabs you and begins to eat you!\n")
@@ -321,6 +335,7 @@ def troll_choice():
         print(f"{player.name}: 'Wow! I can't believe I did it!'\n")
         print("The black dagger shatters and is now useless.\n")
         print("You walk around the dead troll and continue on.\n")
+        statue_room()
     else:
         if player.dagger:
             print("Please type 1, 2 or 3!")
@@ -328,6 +343,50 @@ def troll_choice():
         else:
             print("Please type 1 or 2!")
             troll_choice()
+
+
+def statue_room():
+    """
+    Displays the story and decisions for the statue room.
+    """
+    print()
+    print("You enter a room with 3 large imposing statues.\n")
+    print("Two of the statues are holding weapons but one is not.\n")
+    print("There is a table in front of you with 3 stone weapons on it.\n")
+    print("They appear to be an axe, a sword and a bow.\n")
+    print(f"{player.name}: 'What if I place a weapon on the odd statue?'\n")
+    statue_choice()
+    print("A rumbling can be heard...\n")
+    print("The doorway ahead opens!\n")
+    print("You head through to the next area.\n")
+
+
+def statue_choice():
+    """
+    Displays the random weapon combo for the statues.
+
+    """
+    print(f"{player.name}: 'The two statues with weapons are holding a {statue_weapons.weapons}.'\n")
+    print(f"{player.name}: 'What should I take from the table?'\n")
+    weapon_choice = input("Axe, Sword or Bow?\n")
+    if weapon_choice.lower().strip() == "axe" and statue_weapons.weapons == "Bow and Sword":
+        print("You take the Axe and put it on the statue...\n")
+    elif weapon_choice.lower().strip() == "sword" and statue_weapons.weapons == "Bow and Axe":
+        print("You take the Sword and put it on the statue...\n")
+    elif weapon_choice.lower().strip() == "bow" and statue_weapons.weapons == "Sword and Axe":
+        print("You take the Bow and put it on the statue...\n")
+    else:
+        if weapon_choice.lower().strip() == "axe" or weapon_choice.lower().strip() == "bow" or weapon_choice.lower().strip() == "sword":
+            print(f"You take the {weapon_choice} and put it on the statue...\n")
+            print("Nothing seems to happen...\n")
+            print("Suddenly, the statues come to life!\n")
+            print(f"{player.name}: 'Oh no! I messed up!'\n")
+            print("The statues get closer and you try to run...\n")
+            print("You trip over on a piece of rock!\n")
+            print("Everything fades to black as the sound of stone footsteps get closer...\n")
+            death()
+        print("Please enter Axe, Sword or Bow!")
+        statue_choice()
 
 
 def try_again():
@@ -341,8 +400,10 @@ def try_again():
         introduction()
     elif play_again.lower().strip() == "no":
         print("Thank you for playing!")
+        sys.exit()
     else:
         print("Please type Yes or No!")
+        try_again()
 
 
 def death():
@@ -350,7 +411,7 @@ def death():
     Displays the death message.
     """
     print()
-    print("""  
+    print("""
 
 ▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄  ▐██▌ 
  ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌ ▐██▌ 
@@ -396,6 +457,7 @@ def end_4():
     """
     Displays ending 4.
     """
+
 
 
 introduction()
