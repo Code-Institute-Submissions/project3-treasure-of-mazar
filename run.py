@@ -200,22 +200,7 @@ def path_2():
     print(f"{player.name}: 'What's up with these pots? I can't see inside them.'\n")
     print("Inspecting the pots with your torch, they appear pitch black inside.\n")
     print("Every pot in the room seems to be the exact same.\n")
-    pot_choice = input("Do you wish to put your hand in and search the pots? (Yes/No)\n")
-    if pot_choice.lower().strip() == "yes":
-        print("You put your hand into the pot...\n")
-        print("It feels like your hand was somehow detached from your body.\n")
-        print("Suddenly, you feel an odd, cold object!\n")
-        print("You begin to pull...\n")
-        print("And a pitch black dagger comes out!\n")
-        print(f"{player.name}: 'Whoa! It seems to absorb all the light around it...'\n")
-        print("You put the dagger in your bag.\n")
-        player.dagger = True
-    elif pot_choice.lower().strip() == "no":
-        print(f"{player.name}: 'I have a bad feeling about putting my hand in those pots.'\n")
-        print("You decide not to search the pots and carry on to the next room.\n")
-    else:
-        print("Please type Yes or No!")
-        path_2()
+    pot_choice()
     print("Continuing into the tomb, you come to another crossroad!\n")
     print("To the left, you hear a strange noise, almost like a deep snore.\n")
     print("To the right, you notice an orange glow and an intense wave of heat.\n")
@@ -227,7 +212,7 @@ def path_3():
     Displays the story and decisions for path 3. Sets
     the player location to path 3.
     """
-    
+
 
 
 def path_4():
@@ -235,6 +220,8 @@ def path_4():
     Displays the story and decisions for path 4. Sets
     the player location to path 4.
     """
+    print("You enter a small room covered in a strange substance.\n")
+    print("A foul smell burns your nostrils as you try not to gag.\n")
 
 
 def path_5():
@@ -250,6 +237,28 @@ def path_6():
     the player location to path 6.
     """
 
+def pot_choice():
+    """
+    Asks the user for their input on whether they wish
+    to search the pots in path 2 and displays an outcome
+    depending on their choice.
+    """
+    choice = input("Do you wish to put your hand in and search the pots? (Yes/No)\n")
+    if choice.lower().strip() == "yes":
+        print("You put your hand into the pot...\n")
+        print("It feels like your hand was somehow detached from your body.\n")
+        print("Suddenly, you feel an odd, cold object!\n")
+        print("You begin to pull...\n")
+        print("And a pitch black dagger comes out!\n")
+        print(f"{player.name}: 'Whoa! It seems to absorb all the light around it...'\n")
+        print("You put the dagger in your bag.\n")
+        player.dagger = True
+    elif choice.lower().strip() == "no":
+        print(f"{player.name}: 'I have a bad feeling about putting my hand in those pots.'\n")
+        print("You decide not to search the pots and carry on to the next room.\n")
+    else:
+        print("Please type Yes or No!")
+        pot_choice()
 
 def try_again():
     """
@@ -267,6 +276,9 @@ def try_again():
 
 
 def death():
+    """
+    Displays the death message.
+    """
 
 
 def end_1():
