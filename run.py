@@ -126,7 +126,7 @@ def enter_tomb():
     print("To the right, you see a dark room filled with pots.\n")
     print(f"{player.name}: 'Hmm... Which path should I take?'\n")
     player.location = "Tomb"
-    time.sleep(5)
+    #time.sleep(5)
     path_choice()
 
 
@@ -294,6 +294,16 @@ def troll_choice():
         choice = input("Choose an option: (1/2)\n")
     if choice.strip() == "1":
         print("You try to sneak around the troll.\n")
+        sneak_chance = random.randrange(1,5)
+        print(sneak_chance)
+        if sneak_chance > 3:
+            print("You successfully sneak past the troll!\n")
+            print(f"{player.name}: 'Phew! that was close!'\n")
+            print("You continue on through the tomb.\n")
+        elif sneak_chance <= 3:
+            print("You fail to sneak past the troll and it wakes up!\n")
+            print("The troll grabs you and begins to eat you!\n")
+            death()
     elif choice.strip() == "2":
         print("You attempt to pick up the large rock.\n")
         print("It's heavy but you manage to pick it up.\n")
@@ -305,7 +315,12 @@ def troll_choice():
         print("The troll pummels you with his fist, leaving a bloody mess!\n")
         death()
     elif choice.strip() == "3" and player.dagger:
-        print("You take out the pitch black dagger.\n")
+        print("You take out the pitch black dagger...\n")
+        print("You plunge the dagger into the skull of the troll!\n")
+        print("The troll lets out a blood curdling cry before falling silent.\n")
+        print(f"{player.name}: 'Wow! I can't believe I did it!'\n")
+        print("The black dagger shatters and is now useless.\n")
+        print("You walk around the dead troll and continue on.\n")
     else:
         if player.dagger:
             print("Please type 1, 2 or 3!")
@@ -348,7 +363,7 @@ def death():
  ░ ░         ░ ░     ░           ░     ░     ░  ░   ░     ░    
  ░ ░                           ░                  ░            
     """)
-    print("Better luck next time!")
+    print("Better luck next time!\n")
     try_again()
 
 
