@@ -5,6 +5,10 @@ import os
 
 
 class PlayerAttributes:
+    """
+    Stores attributes for the player such as name,
+    location and items.
+    """
     def __init__(self, name, location, dagger):
         self.name = name
         self.location = location
@@ -15,6 +19,10 @@ player = PlayerAttributes('', '', False)
 
 
 class StatueWeapons:
+    """
+    Stores random weapon combo data for the statues
+    room.
+    """
     def __init__(self, weapons):
         self.weapons = weapons
 
@@ -76,12 +84,16 @@ def start_game():
     player.dagger = False
     weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
     statue_weapons.weapons = random.choice(weapon_combos)
-    
+
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
     if start_choice.lower().strip() == "yes":
         player.name = input("What is your name?\n")
-        print(f"Welcome {player.name}. Your adventure awaits!\n")
-        begin_adventure()
+        if len(player.name.strip()) > 0 and len(player.name.strip()) <= 30:
+            print(f"Welcome {player.name}. Your adventure awaits!\n")
+            begin_adventure()
+        else:
+            print("Your name must be more than 0 characters and no more than 30!")
+            start_game()
     elif start_choice.lower().strip() == "no":
         print("Very well... Please take your time.")
         time.sleep(5)
