@@ -62,8 +62,10 @@ def introduction():
 def start_game():
     """
     Lets the user choose to start the game and enter
-    their name before beginning.
+    their name before beginning. Sets the player values
+    to default.
     """
+    player.dagger = False
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
     if start_choice.lower().strip() == "yes":
         player.name = input("What is your name?\n")
@@ -220,8 +222,27 @@ def path_4():
     Displays the story and decisions for path 4. Sets
     the player location to path 4.
     """
+    print()
+    player.location = "Path 4"
     print("You enter a small room covered in a strange substance.\n")
     print("A foul smell burns your nostrils as you try not to gag.\n")
+    print(f"{player.name}: 'Eugh! What is that disgusting smell!?'\n")
+    print(f"{player.name}: 'And this substance is so sticky! It's hard to move!'\n")
+    print("As you make your way through the room, the strange noise gets louder.\n")
+    print("Soon, you come face to face with a large troll slumpt over in a doorway.\n")
+    print(f"{player.name}: 'He seems to be sleeping... He snores like my grandmother!'\n")
+    print("It appears the troll blocks the only path forward.\n")
+    print("You may be able to sneak around, but you may risk waking him up.\n")
+    print("There is a large rock on the floor next to the troll.\n")
+    if player.dagger:
+        print("Maybe that black dagger could be of use?\n")
+    print(f"{player.name}: 'What should I do?\n")
+    print("1. Attempt to sneak around the troll.\n")
+    print("2. Try to kill the troll with the large rock.\n")
+    if player.dagger:
+        print("3. Use the black dagger to kill the troll.\n")
+    troll_choice()
+
 
 
 def path_5():
@@ -240,7 +261,7 @@ def path_6():
 def pot_choice():
     """
     Asks the user for their input on whether they wish
-    to search the pots in path 2 and displays an outcome
+    to search the pots in path 2 and displays an output
     depending on their choice.
     """
     choice = input("Do you wish to put your hand in and search the pots? (Yes/No)\n")
@@ -259,6 +280,40 @@ def pot_choice():
     else:
         print("Please type Yes or No!")
         pot_choice()
+
+
+def troll_choice():
+    """
+    Asks the user for their input on what they wish
+    to do with the troll in path 4 and displays an
+    output depending on their choice.
+    """
+    if player.dagger:
+        choice = input("Choose an option: (1/2/3)\n")
+    else:
+        choice = input("Choose an option: (1/2)\n")
+    if choice.strip() == "1":
+        print("You try to sneak around the troll.\n")
+    elif choice.strip() == "2":
+        print("You attempt to pick up the large rock.\n")
+        print("It's heavy but you manage to pick it up.\n")
+        print("You lift the rock above your head and bring it down on the troll!\n")
+        print(f"{player.name}: 'Hiyah!'\n")
+        print("The rock bounces off the troll without a scratch.\n")
+        print("Suddenly, the troll wakes up!\n")
+        print(f"{player.name}: 'Uh oh!'\n")
+        print("The troll pummels you with his fist, leaving a bloody mess!\n")
+        death()
+    elif choice.strip() == "3" and player.dagger:
+        print("You take out the pitch black dagger.\n")
+    else:
+        if player.dagger:
+            print("Please type 1, 2 or 3!")
+            troll_choice()
+        else:
+            print("Please type 1 or 2!")
+            troll_choice()
+
 
 def try_again():
     """
@@ -279,6 +334,22 @@ def death():
     """
     Displays the death message.
     """
+    print()
+    print("""  
+
+▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄  ▐██▌ 
+ ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌ ▐██▌ 
+  ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌ ▐██▌ 
+  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░▓█▄   ▌░██░▒▓█  ▄ ░▓█▄   ▌ ▓██▒ 
+  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░▒████▓ ░██░░▒████▒░▒████▓  ▒▄▄  
+   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ▒▒▓  ▒ ░▓  ░░ ▒░ ░ ▒▒▓  ▒  ░▀▀▒ 
+ ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░     ░ ▒  ▒  ▒ ░ ░ ░  ░ ░ ▒  ▒  ░  ░ 
+ ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░     ░ ░  ░  ▒ ░   ░    ░ ░  ░     ░ 
+ ░ ░         ░ ░     ░           ░     ░     ░  ░   ░     ░    
+ ░ ░                           ░                  ░            
+    """)
+    print("Better luck next time!")
+    try_again()
 
 
 def end_1():
