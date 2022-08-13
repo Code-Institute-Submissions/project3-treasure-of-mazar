@@ -9,15 +9,16 @@ class PlayerAttributes:
     Stores attributes for the player such as name,
     location and items.
     """
-    def __init__(self, name, location, dagger, key, blessing):
+    def __init__(self, name, location, dagger, key, blessing, secret):
         self.name = name
         self.location = location
         self.dagger = dagger
         self.key = key
         self.blessing = blessing
+        self.secret = secret
 
 
-player = PlayerAttributes('', '', False, False, False)
+player = PlayerAttributes('', '', False, False, False, False)
 
 
 class Random:
@@ -88,6 +89,7 @@ def start_game():
     player.dagger = False
     player.key = False
     player.blessing = False
+    player.secret = False
     weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
     random_select.weapons = random.choice(weapon_combos)
     create_riddle()
@@ -238,13 +240,16 @@ def path_3():
     print()
     print("You enter a large dark room illuminated only by your torch.\n")
     print("Cold air chills you to the bone and you feel uneasy.\n")
-    print(f"{player.name}: 'Brrr! It's freezing in here. Even my torch feels cold.\n")
+    print(f"{player.name}: 'Brrr! It's freezing in here. Even my torch feels cold.'\n")
     print("As you make your way through the room, you feel like you're being watched.\n")
     print("Frost has formed on the floor making it hard to walk on.\n")
     print("Out of the corner of your eye, you spot a ghostly figure.\n")
     print("It watches you intently, almost as if it's beckoning you over.\n")
     print(f"{player.name}: 'Yikes, that's unsettling...'\n")
     ghost_choice()
+    print("You continue your adventure deeper into the tomb...\n")
+    feast_room()
+
     
 
 def path_4():
@@ -273,10 +278,10 @@ def path_4():
     troll_choice()
 
 
-def path_5():
+def feast_room():
     """
-    Displays the story and decisions for path 5. Sets
-    the player location to path 5.
+    Displays the story and decisions for the feast room.
+    Checks if the player still has the blessing.
     """
 
 
@@ -494,8 +499,9 @@ def create_riddle():
 
 def riddle_choice():
     """
-    Displays the random riddle and checks the player
-    answer against the correct answer.
+    Displays the random riddle and gets input from
+    the user, and checks the player answer against
+    the correct answer.
     """
     print(random_select.riddle)
     riddle_answer = input("'What am I?'\n")
@@ -522,15 +528,21 @@ def riddle_choice():
 
 
 def ghost_choice():
+    """
+    Asks the user for input on approaching the ghost.
+    Displays an outcome depending on their choice.
+    """
     approach_ghost = input("Approach the figure? (Yes/No)\n")
     if approach_ghost.lower().strip() == "yes":
         print("You decide to approach the ominious figure...\n")
         print(f"{player.name}: 'Hello? Can you hear me?'\n")
         print(f"???: '{player.name} why have you come?'\n")
         print("You feel a chill as the figure speaks.\n")
-        print(f"{player.name}: 'How do you know my name?'")
+        print(f"{player.name}: 'How do you know my name?'\n")
         print("???: 'I know the name of all who enter this tomb.'\n")
-        print(f"???: 'Now Answer me {player.name}: Why have you come?'")
+        print(f"???: 'Now Answer me {player.name}: Why have you come?'\n")
+        print("You're unsure how this figure may react to you coming for the treasure.\n")
+        truth_choice()
     elif approach_ghost.lower().strip() == "no":
         print(f"{player.name}: 'I'll pretend I didn't see that.\n")
         print("You decide to continue your journey.\n")
@@ -543,6 +555,48 @@ def ghost_choice():
     else:
         print("Please type Yes or No!")
         ghost_choice()
+
+
+def truth_choice():
+    """
+    Asks the user for input on telling the truth.
+    Displays an outcome depending on their choice.
+    """
+    tell_truth = input(f"{player.name}: 'Should I tell it the truth?' (Yes/No)\n")
+    if tell_truth.lower().strip() == "yes":
+        print(f"{player.name}: 'I have come seeking the Treasure of Mazar.'\n")
+        print("The figure stares at you, making you feel more uneasy.\n")
+        print(f"???: 'I sense truth in your words {player.name}.'\n")
+        print("???: 'After all, that is the reason for all who come here.\n")
+        print("???: 'My name is Arlay, and I was once the architect of this tomb.'\n")
+        print("Arlay: 'But I was killed here after its completion.'\n")
+        print("Arlay: 'King Mazar betrayed me and cursed my soul to wander here.'\n")
+        print("Arlay: 'I have long awaited someone to make it this far.'\n")
+        print(f"Arlay: 'You, {player.name}, are the only one who has.'\n")
+        print("Arlay: 'Allow me to tell you the secret of this place.'\n")
+        print("Arlay: 'So that you may find what you seek and leave unharmed.'\n")
+        print(f"{player.name}: 'Okay, but why help me?'\n")
+        print("Arlay: 'So that I can have my revenge on King Mazar...'\n")
+        print("Arlay: 'Listen closely.'\n")
+        print("Arlay: 'When you take the treasure, the tomb is set to collapse.'\n")
+        print("Arlay: 'You can exit from where you came if you are lucky.'\n")
+        print("Arlay: 'But there is a secret exit in the treasure room.'\n")
+        print("Arlay: 'Go through the secret exit and you will be safe.'\n")
+        print("You make a note of the secret exit.\n")
+        player.secret = True
+        print(f"{player.name}: 'Thank you Arlay. I won't let you down!'\n")
+    elif tell_truth.lower().strip() == "no":
+        print(f"{player.name}: 'I am just exploring!'\n")
+        print("The figure stares at you, and you feel a chill down your spine.\n")
+        print("???: 'LIES!'\n")
+        print("The figure lets out a piercing scream, causing your ears to ring.\n")
+        print("You start feeling nauseous as the room starts to spin.\n")
+        print("You collapse on the floor and hear a voice.\n")
+        print(f"???: 'You are a fool {player.name}. Lies do not get past me.'\n")
+        death()
+    else:
+        print("Please type Yes or No!")
+        truth_choice()
 
 
 def try_again():
