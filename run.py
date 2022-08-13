@@ -9,13 +9,14 @@ class PlayerAttributes:
     Stores attributes for the player such as name,
     location and items.
     """
-    def __init__(self, name, location, dagger):
+    def __init__(self, name, location, dagger, key):
         self.name = name
         self.location = location
         self.dagger = dagger
+        self.key = key
 
 
-player = PlayerAttributes('', '', False)
+player = PlayerAttributes('', '', False, False)
 
 
 class StatueWeapons:
@@ -82,6 +83,7 @@ def start_game():
     to default.
     """
     player.dagger = False
+    player.key = False
     weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
     statue_weapons.weapons = random.choice(weapon_combos)
 
@@ -268,7 +270,6 @@ def path_4():
     troll_choice()
 
 
-
 def path_5():
     """
     Displays the story and decisions for path 5. Sets
@@ -371,12 +372,15 @@ def statue_room():
     print("A rumbling can be heard...\n")
     print("The doorway ahead opens!\n")
     print("You head through to the next area.\n")
+    key_room()
 
 
 def statue_choice():
     """
     Displays the random weapon combo for the statues.
-
+    Checks the user input against the statue combos and
+    prints the output depending on whether they were correct
+    or not.
     """
     print(f"{player.name}: 'The two statues with weapons are holding a {statue_weapons.weapons}.'\n")
     print(f"{player.name}: 'What should I take from the table?'\n")
@@ -399,6 +403,42 @@ def statue_choice():
             death()
         print("Please enter Axe, Sword or Bow!")
         statue_choice()
+
+
+def key_room():
+    """
+    Displays the story for the key room.
+    """
+    print()
+    print("You enter a tiny room illuminated by a glowing white crystal above.\n")
+    print("In the centre of the room is a pedestal shaped like 2 hands.\n")
+    print(f"{player.name}: 'This room feels different to the others.'\n")
+    print(f"{player.name}: 'It's so calm and peaceful...'\n")
+    print(f"{player.name}: 'But I can't let down my guard yet.'\n")
+    print("You approach the pedestal and notice a small gold key upon it.\n")
+    print("A faint humming noise can be heard from the key.\n")
+    print(f"{player.name}: 'This key seems like it may be important...'\n")
+    key_choice()
+    print("You continue through the tomb to the next area.\n")
+
+
+def key_choice():
+    """
+    Asks the player for input on taking the gold key.
+    Displays an outcome depending on their choice.
+    """
+    key_take = input("Do you want to take the key? (Yes/No)\n")
+    if key_take.lower().strip() == "yes":
+        player.key = True
+        print("You slowly reach forward for the key...\n")
+        print("You carefully take the key from the pedestal.\n")
+        print("You obtained a gold key!\n")
+    elif key_take.lower().strip() == "no":
+        print(f"{player.name}: 'This could be a trap... I think I'll leave it.'\n")
+        print("You decide not to take the key.\n")
+    else:
+        print("Please type Yes or No!")
+        key_choice()
 
 
 def try_again():
