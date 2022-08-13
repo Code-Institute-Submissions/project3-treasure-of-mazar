@@ -19,16 +19,18 @@ class PlayerAttributes:
 player = PlayerAttributes('', '', False, False)
 
 
-class StatueWeapons:
+class Random:
     """
     Stores random weapon combo data for the statues
     room.
     """
-    def __init__(self, weapons):
+    def __init__(self, weapons, riddle):
         self.weapons = weapons
+        self.riddle = riddle
 
 
-statue_weapons = StatueWeapons('')
+random_select = Random('', '')
+
 
 
 def introduction():
@@ -85,7 +87,7 @@ def start_game():
     player.dagger = False
     player.key = False
     weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
-    statue_weapons.weapons = random.choice(weapon_combos)
+    random_select.weapons = random.choice(weapon_combos)
 
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
     if start_choice.lower().strip() == "yes":
@@ -382,14 +384,14 @@ def statue_choice():
     prints the output depending on whether they were correct
     or not.
     """
-    print(f"{player.name}: 'The two statues with weapons are holding a {statue_weapons.weapons}.'\n")
+    print(f"{player.name}: 'The two statues with weapons are holding a {random_select.weapons}.'\n")
     print(f"{player.name}: 'What should I take from the table?'\n")
     weapon_choice = input("Axe, Sword or Bow?\n")
-    if weapon_choice.lower().strip() == "axe" and statue_weapons.weapons == "Bow and Sword":
+    if weapon_choice.lower().strip() == "axe" and random_select.weapons == "Bow and Sword":
         print("You take the Axe and put it on the statue...\n")
-    elif weapon_choice.lower().strip() == "sword" and statue_weapons.weapons == "Bow and Axe":
+    elif weapon_choice.lower().strip() == "sword" and random_select.weapons == "Bow and Axe":
         print("You take the Sword and put it on the statue...\n")
-    elif weapon_choice.lower().strip() == "bow" and statue_weapons.weapons == "Sword and Axe":
+    elif weapon_choice.lower().strip() == "bow" and random_select.weapons == "Sword and Axe":
         print("You take the Bow and put it on the statue...\n")
     else:
         if weapon_choice.lower().strip() == "axe" or weapon_choice.lower().strip() == "bow" or weapon_choice.lower().strip() == "sword":
@@ -440,6 +442,16 @@ def key_choice():
         print("Please type Yes or No!")
         key_choice()
 
+
+def riddle():
+    """
+    Generates a random riddle.
+    """
+    riddle_list = [
+        "I am tall at the beginning of my life but short at its end.",
+        "I am always in front of you, but can't be seen.",
+        ""
+    ]
 
 def try_again():
     """
