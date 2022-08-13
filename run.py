@@ -283,6 +283,17 @@ def feast_room():
     Displays the story and decisions for the feast room.
     Checks if the player still has the blessing.
     """
+    print()
+    print("You enter a grand room with a large opulant table.\n")
+    print("On the table is all sorts of food and drink.\n")
+    print("It looks like the food has been freshly served.\n")
+    print(f"{player.name}: 'Everything looks so delicious!'\n")
+    print("You approach the table and your stomach begins to growl.\n")
+    if player.blessing:
+        print("You feel like some of the food is poisoned.\n")
+    print("A sudden urge to eat overcomes you and you sit down to feast.\n")
+    print(f"{player.name}: 'I'm starving!'")
+    
 
 
 def path_6():
