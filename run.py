@@ -170,11 +170,15 @@ def path_choice():
     if path.lower().strip() == "left":
         if player.location == "Tomb":
             path_1()
+        elif player.location == "Path 1":
+            path_5()
         elif player.location == "Path 2":
             path_4()
     elif path.lower().strip() == "right":
         if player.location == "Tomb":
             path_2()
+        elif player.location == "Path 1":
+            path_3()
         elif player.location == "Path 2":
             path_5()
     else:
@@ -202,8 +206,11 @@ def path_1():
     player.blessing = True
     print(f"{player.name}: 'Um, thank you. Talking... Stone face?'\n")
     print("The great door opens before you and you carefully go through.\n")
+    print("As you travel onward, you come to another crossroad!\n")
+    print("To the left, you notice an orange glow and an intense wave of heat.\n")
+    print("To the right, you feel a cold chill and an ominious presence.\n")
+    path_choice()
     
-
 
 def path_2():
     """
@@ -226,18 +233,26 @@ def path_2():
 
 def path_3():
     """
-    Displays the story and decisions for path 3. Sets
-    the player location to path 3.
+    Displays the story and decisions for path 3.
     """
-
+    print()
+    print("You enter a large dark room illuminated only by your torch.\n")
+    print("Cold air chills you to the bone and you feel uneasy.\n")
+    print(f"{player.name}: 'Brrr! It's freezing in here. Even my torch feels cold.\n")
+    print("As you make your way through the room, you feel like you're being watched.\n")
+    print("Frost has formed on the floor making it hard to walk on.\n")
+    print("Out of the corner of your eye, you spot a ghostly figure.\n")
+    print("It watches you intently, almost as if it's beckoning you over.\n")
+    print(f"{player.name}: 'Yikes, that's unsettling...'\n")
+    ghost_choice()
+    
 
 def path_4():
     """
-    Displays the story and decisions for path 4. Sets
-    the player location to path 4.
+    Displays the story and decisions for path 4. Checks if
+    the player has picked up the dagger.
     """
     print()
-    player.location = "Path 4"
     print("You enter a small room covered in a strange substance.\n")
     print("A foul smell burns your nostrils as you try not to gag.\n")
     print(f"{player.name}: 'Eugh! What is that disgusting smell!?'\n")
@@ -462,7 +477,7 @@ def key_choice():
 
 def create_riddle():
     """
-    Generates a random riddle.
+    Generates a random riddle from a list.
     """
     riddle_list = [
         "'I am tallest at the beginning of my life, but shortest at its end.'\n",
@@ -504,6 +519,30 @@ def riddle_choice():
         print("Intense heat begins to burn your flesh...\n")
         print("Until nothing remained but ash.\n")
         death()
+
+
+def ghost_choice():
+    approach_ghost = input("Approach the figure? (Yes/No)\n")
+    if approach_ghost.lower().strip() == "yes":
+        print("You decide to approach the ominious figure...\n")
+        print(f"{player.name}: 'Hello? Can you hear me?'\n")
+        print(f"???: '{player.name} why have you come?'\n")
+        print("You feel a chill as the figure speaks.\n")
+        print(f"{player.name}: 'How do you know my name?'")
+        print("???: 'I know the name of all who enter this tomb.'\n")
+        print(f"???: 'Now Answer me {player.name}: Why have you come?'")
+    elif approach_ghost.lower().strip() == "no":
+        print(f"{player.name}: 'I'll pretend I didn't see that.\n")
+        print("You decide to continue your journey.\n")
+        print("As you walk on, you begin to get colder and colder...\n")
+        print("Your legs begin to seize in the freezing cold...\n")
+        print("And you fall to the ground, unable to breathe.\n")
+        print("You hear an ominious voice just before your senses fail.\n")
+        print(f"???: 'You cannot escape fate {player.name}...'\n")
+        death()
+    else:
+        print("Please type Yes or No!")
+        ghost_choice()
 
 
 def try_again():
