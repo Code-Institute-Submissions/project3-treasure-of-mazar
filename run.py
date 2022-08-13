@@ -9,14 +9,15 @@ class PlayerAttributes:
     Stores attributes for the player such as name,
     location and items.
     """
-    def __init__(self, name, location, dagger, key):
+    def __init__(self, name, location, dagger, key, blessing):
         self.name = name
         self.location = location
         self.dagger = dagger
         self.key = key
+        self.blessing = blessing
 
 
-player = PlayerAttributes('', '', False, False)
+player = PlayerAttributes('', '', False, False, False)
 
 
 class Random:
@@ -86,8 +87,10 @@ def start_game():
     """
     player.dagger = False
     player.key = False
+    player.blessing = False
     weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
     random_select.weapons = random.choice(weapon_combos)
+    create_riddle()
 
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
     if start_choice.lower().strip() == "yes":
@@ -192,31 +195,14 @@ def path_1():
     print("Above the door sits a ghastly stone face staring down at you.\n")
     print(f"{player.name}: 'Creepy... It looks like it's judging me.'\n")
     print(f"{player.name}: 'Should I try to open the door or go back the other way?'\n")
-    door_choice = input("Open the door? (Yes/No)\n")
-    if door_choice.lower().strip() == "yes":
-        print(f"{player.name}: 'What's the worst that can happen?'\n")
-        print("You try to pull on the door handles...\n")
-        print("The handles are cold and heavy and the door refuses to budge.\n")
-        print("Suddenly a loud voice booms through the room!\n")
-        print("'FOOLISH MORTAL! Who dares disturb this tomb?'\n")
-        print("In a panic, you look around the room, wondering where the voice came from.\n")
-        print("You see the statue above the door staring at you with red eyes!\n")
-        print(f"{player.name}: 'Um, my name is {player.name}!'\n")
-        print(f"'Very well, {player.name.upper()}! Answer my riddle and you may pass.'\n")
-        print("'But fail, and you will be reduced to ash where you stand!'\n")
-        print("You try to move, but you seem to be frozen in place!\n")
-        print(f"{player.name}: I guess I have no choice...\n")
-        print(f"{player.name}: 'What is your riddle?'\n")
-        print("'Answer me this:'\n")
-    if door_choice.lower().strip() == "no":
-        print(f"{player.name}: 'I think I preferred the other room...'\n")
-        print("You decide to turn around and head back to the room with pots.\n")
-        time.sleep(2)
-        path_2()
-    else:
-        print("Please type Yes or No!")
-        time.sleep(2)
-        path_1()
+    door_choice()
+    riddle_choice()
+    print("'Impressive, mortal... You are wise indeed!'\n")
+    print("'Take my blessing and venture forth! Your treasure lies deeper.'\n")
+    player.blessing = True
+    print(f"{player.name}: 'Um, thank you. Talking... Stone face?'\n")
+    print("The great door opens before you and you carefully go through.\n")
+    
 
 
 def path_2():
@@ -284,6 +270,37 @@ def path_6():
     Displays the story and decisions for path 6. Sets
     the player location to path 6.
     """
+
+
+def door_choice():
+    """
+    Asks the user for their input on whether they wish to
+    open the door in path 1 and displays an output depending
+    on their choice.
+    """
+    open_door = input("Open the door? (Yes/No)\n")
+    if open_door.lower().strip() == "yes":
+        print(f"{player.name}: 'What's the worst that can happen?'\n")
+        print("You try to pull on the door handles...\n")
+        print("The handles are cold and heavy and the door refuses to budge.\n")
+        print("Suddenly a loud voice booms through the room!\n")
+        print("'FOOLISH MORTAL! Who dares disturb this tomb?'\n")
+        print("In a panic, you look around the room, wondering where the voice came from.\n")
+        print("You see the statue above the door staring at you with red eyes!\n")
+        print(f"{player.name}: 'Um, my name is {player.name}!'\n")
+        print(f"'Very well, {player.name.upper()}! Answer my riddle and you may pass.'\n")
+        print("'But fail, and you will be reduced to ash where you stand!'\n")
+        print("You try to move, but you seem to be frozen in place!\n")
+        print(f"{player.name}: 'I guess I have no choice...'\n")
+        print(f"{player.name}: 'What is your riddle?'\n")
+        print("'Answer me this:'\n")
+    elif open_door.lower().strip() == "no":
+        print(f"{player.name}: 'I think I preferred the other room...'\n")
+        print("You decide to turn around and head back to the room with pots.\n")
+        path_2()
+    else:
+        print("Please type Yes or No!")
+        door_choice()
 
 
 def pot_choice():
@@ -443,15 +460,51 @@ def key_choice():
         key_choice()
 
 
-def riddle():
+def create_riddle():
     """
     Generates a random riddle.
     """
     riddle_list = [
-        "I am tall at the beginning of my life but short at its end.",
-        "I am always in front of you, but can't be seen.",
-        ""
+        "'I am tallest at the beginning of my life, but shortest at its end.'\n",
+        "'I am always in front of you, but can't be seen.'\n",
+        "'Always in you, sometimes on you; If I surround you, I can kill you.'\n",
+        "'I cause death yet make your day. I am your friend, but your enemy. I am the beginning and end.'\n",
+        "'Crimson I am born, yellow I dance, ebony I die.'\n",
+        "'I can fly but I have no wings. I can cry but I have no eyes.'\n",
+        "'I'm light as a feather, yet the strongest man can't hold me for more than 5 minutes.'\n"
     ]
+
+    random_select.riddle = random.choice(riddle_list)
+
+
+def riddle_choice():
+    """
+    Displays the random riddle and checks the player
+    answer against the correct answer.
+    """
+    print(random_select.riddle)
+    riddle_answer = input("'What am I?'\n")
+    if "candle" in riddle_answer.lower().strip() and random_select.riddle == "'I am tallest at the beginning of my life, but shortest at its end.'\n":
+        print("Correct!\n")
+    elif "future" in riddle_answer.lower().strip() and random_select.riddle == "'I am always in front of you, but can't be seen.'\n":
+        print("Correct!\n")
+    elif "water" in riddle_answer.lower().strip() and random_select.riddle == "'Always in you, sometimes on you; If I surround you, I can kill you.'\n":
+        print("Correct!\n")
+    elif "time" in riddle_answer.lower().strip() and random_select.riddle == "'I cause death yet make your day. I am your friend, but your enemy. I am the beginning and end.'\n":
+        print("Correct!\n")
+    elif "fire" in riddle_answer.lower().strip() and random_select.riddle == "'Crimson I am born, yellow I dance, ebony I die.'\n":
+        print("Correct!\n")
+    elif "cloud" in riddle_answer.lower().strip() and random_select.riddle == "'I can fly but I have no wings. I can cry but I have no eyes.'\n":
+        print("Correct!\n")
+    elif "breath" in riddle_answer.lower().strip() and random_select.riddle == "'I'm light as a feather, yet the strongest man can't hold me for more than 5 minutes.'\n":
+        print("Correct!\n")
+    else:
+        print("'YOU FOOL... You are not worthy to pass!'\n")
+        print("Suddenly a great flash of light envelopes the room.\n")
+        print("Intense heat begins to burn your flesh...\n")
+        print("Until nothing remained but ash.\n")
+        death()
+
 
 def try_again():
     """
