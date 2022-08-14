@@ -585,6 +585,40 @@ def key_room():
     print("You continue through the tomb to the next area.\n")
 
 
+def chest_room():
+    """
+    Displays the story for the chest room.
+    """
+    print()
+    print("You walk into a grand circular room.\n")
+    print("Surrounding the room are great marble pillars.\n")
+    print("You spot something in the centre of the room.\n")
+    print(f"{player.name}: 'Could it be?'\n")
+    print("A grand golden chest rests in the centre of the room.\n")
+    print("It is decorated with golden leaves, each worth a fortune.\n")
+    print(f"{player.name}: 'This must be it! The Treasure of Mazar!'\n")
+    print("It seems your journey is almost over.\n")
+    print("A gold lock seals the chest shut.\n")
+    print("And it is far too heavy to carry.\n")
+    print("You will need to open it here to get the treasure inside.\n")
+    print(f"{player.name}: 'The lock seems pretty complex...'\n")
+    if player.key:
+        print(f"{player.name}: 'Hmm, I wonder if that gold key fits?'\n")
+    chest_choice()
+    print("You slowly open the chest...\n")
+    print(f"{player.name}: 'No way... I must be dreaming!'\n")
+    print("Inside the chest rests an immaculate gold chalice.\n")
+    print("The chalice is encrusted with countless jewels.\n")
+    print("You pick up the chalice and hold it above your head.\n")
+    print(f"{player.name}: 'I found the Treasure of Mazar!'\n")
+    print("However, your celebration is cut short as a rumbling is felt.\n")
+    print("Pieces of rock begin to fall as the tomb starts to collpase!\n")
+    print(f"{player.name}: 'Oh no! I better get out of here!'\n")
+    if player.secret:
+        print("You remember the secret exit Arlay told you about.\n")
+    
+
+
 def key_choice():
     """
     Asks the player for input on taking the gold key.
@@ -602,6 +636,41 @@ def key_choice():
     else:
         print("Please type Yes or No!")
         key_choice()
+
+
+def chest_choice():
+    """
+    Asks the player for input on opening the chest in
+    the chest room.
+    """
+    open_chest = input("Try to open the chest? (Yes/No)\n")
+    if open_chest.lower().strip() == "yes":
+        print("You attempt to pick the lock on the chest...\n")
+        print("The mechanism feels ancient...\n")
+        open_chance = random.randrange(1, 4)
+        if open_chance > 2:
+            print("Suddenly, you hear a click!\n")
+            print("You manage to pick the lock!\n")
+        elif open_chance <= 2:
+            print("The lock seizes as you attempt to open it.\n")
+            print("Suddenly, all exits of the room close!\n")
+            print(f"{player.name}: 'No! I came so far!'\n")
+            print("The chest sinks into a platform below ground.\n")
+            print("The floor and ceiling start moving toward each other!\n")
+            print("You lie down, defeated, as you await the inevitable...\n")
+            death()
+    elif open_chest.lower().strip() == "yes" and player.key:
+        print("You pull out the gold key you found earlier.\n")
+        print("You insert it into the lock.\n")
+        print(f"{player.name}: 'Please don't be a fake...'\n")
+        print("Success! The key opens the lock!")
+        player.key = False
+    elif open_chest.lower().strip() == "no":
+        print(f"{player.name}: 'It might be a trap...'\n")
+        print(f"{player.name}: 'These gold leaves would set me for life...'\n")
+        print("You cut the gold leaves off the chest.\n")
+        print(f"{player.name}: 'I'm more than happy with this.'")
+        end_3()
 
 
 def create_riddle():
