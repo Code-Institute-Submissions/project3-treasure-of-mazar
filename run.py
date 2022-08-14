@@ -278,6 +278,12 @@ def path_4():
     troll_choice()
 
 
+def path_5():
+    """
+    Displays the story and decisions for path 5.
+    """
+
+
 def feast_room():
     """
     Displays the story and decisions for the feast room.
@@ -290,17 +296,35 @@ def feast_room():
     print(f"{player.name}: 'Everything looks so delicious!'\n")
     print("You approach the table and your stomach begins to growl.\n")
     if player.blessing:
-        print("You feel like some of the food is poisoned.\n")
-    print("A sudden urge to eat overcomes you and you sit down to feast.\n")
-    print(f"{player.name}: 'I'm starving!'")
-    
+        print("You sense that some of the food is poisoned.\n")
+        print("You feel the power of the blessing at work and identify the poisoned food.\n")
+        print(f"{player.name}: 'I'll have some of the tasty, non-poisoned food thanks!'\n")
+        print("As you begin to eat, the power of the blessing fades...\n")
+    else: 
+        print("A sudden urge to eat overcomes you and you sit down to feast.\n")
+        print(f"{player.name}: 'I'm starving!'\n")
+    print(f"{player.name}: 'Everything tastes so delicious!'\n")
+    print("You continue to eat, and feel the urge to keep going.\n")
+    eating_choice()
+    print("You get up from the table and head towards the next room.\n") 
 
 
-def path_6():
+def eating_choice():
     """
-    Displays the story and decisions for path 6. Sets
-    the player location to path 6.
+    Asks the user for their input on whether they wish to
+    continue eating or stop eating for the feast room. Displays
+    an output depending on their choice.
     """
+    keep_eating = input("Do you want to continue eating? (Yes/No)\n")
+    if keep_eating.lower().strip() == "yes":
+        print(f"{player.name}: 'Can't stop now... I'm too hungry!'\n")
+        end_2()
+    elif keep_eating.lower().strip() == "no":
+        print(f"{player.name}: 'No... I must continue on to the treasure!'\n")
+        print("You decide to stop eating.\n")
+    else:
+        print("Please type Yes or No!")
+        eating_choice()
 
 
 def door_choice():
