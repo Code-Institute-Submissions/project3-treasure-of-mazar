@@ -300,14 +300,46 @@ def feast_room():
         print("You feel the power of the blessing at work and identify the poisoned food.\n")
         print(f"{player.name}: 'I'll have some of the tasty, non-poisoned food thanks!'\n")
         print("As you begin to eat, the power of the blessing fades...\n")
+        player.blessing = False
     else: 
         print("A sudden urge to eat overcomes you and you sit down to feast.\n")
         print(f"{player.name}: 'I'm starving!'\n")
-
+        print("On the table is a steak, soup, apples and chicken.\n")
+        food_choice()
     print(f"{player.name}: 'Everything tastes so delicious!'\n")
     print("You continue to eat, and feel the urge to keep going.\n")
     eating_choice()
-    print("You get up from the table and head towards the next room.\n") 
+    print("You get up from the table and head towards the next room.\n")
+
+
+def food_choice():
+    """
+    Asks the user for their input on what food they wish
+    to eat. Runs a random chance to eat poisoned food.
+    3/4 chance to eat poison food and 1/4 chance to not.
+    """
+    eat_food = input("What food do you wish to eat?\n")
+    if eat_food.lower().strip() == "steak":
+        print("You take a bite of the steak...\n")
+    elif eat_food.lower().strip() == "soup":
+        print("You drink some of the soup...\n")
+    elif eat_food.lower().strip() == "apple":
+        print("You eat an apple...\n")
+    elif eat_food.lower().strip() == "chicken":
+        print("You eat a piece of chicken...\n")
+    else:
+        print("Please type steak, soup, apple or chicken!")
+        food_choice()
+    
+    poison_chance = random.randrange(1, 5)
+    if poison_chance > 3:
+        print(f"The {eat_food} was delicious!\n")
+    elif poison_chance <= 3:
+        print(f"The {eat_food} causes you to heave!\n")
+        print("It seems that it was poisoned!\n")
+        print(f"{player.name}: 'My insides feel like they are going to explode!'\n")
+        print("You fall to the floor as you begin to cough up blood!")
+        death()
 
 
 def eating_choice():
@@ -396,7 +428,7 @@ def troll_choice():
     if choice.strip() == "1":
         print("You try to sneak around the troll.\n")
         print("As you get close, the troll begins to grumble...\n")
-        sneak_chance = random.randrange(1,5)
+        sneak_chance = random.randrange(1, 5)
         if sneak_chance > 3:
             print("You successfully sneak past the troll!\n")
             print(f"{player.name}: 'Phew! that was close!'\n")
