@@ -282,6 +282,21 @@ def path_5():
     """
     Displays the story and decisions for path 5.
     """
+    print()
+    print("You enter a fiery room filled with pits of lava.\n")
+    print("In the corner of the room are some wooden planks.\n")
+    print("The exit to the room is on the opposite side of the lava.\n")
+    print(f"{player.name}: 'I need to get over to the other side somehow...'\n")
+    if player.blessing:
+        print("You feel the power of the blessing radiating.\n")
+        print("It seems to protect you from the heat!\n")
+    print(f"{player.name}: 'Maybe I could try using those planks to get across?'\n")
+    print("What do you want to do?\n")
+    print("1. Try to use the planks to build a bridge across.\n")
+    print("2. Try to go through the lava.\n")
+    if player.blessing:
+        print("3. Use the power of the blessing to make it across.\n")
+    lava_choice()
 
 
 def feast_room():
