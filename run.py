@@ -303,6 +303,7 @@ def feast_room():
     else: 
         print("A sudden urge to eat overcomes you and you sit down to feast.\n")
         print(f"{player.name}: 'I'm starving!'\n")
+
     print(f"{player.name}: 'Everything tastes so delicious!'\n")
     print("You continue to eat, and feel the urge to keep going.\n")
     eating_choice()
@@ -690,6 +691,20 @@ def end_2():
     """
     Displays ending 2.
     """
+    print()
+    print("You continue stuffing your mouth with food...\n")
+    print("The food seems to magically refill itself after you eat it.\n")
+    print("More and more, you eat and eat...\n")
+    print("Until you forget the reason you came here in the first place.\n")
+    print("The only thing on your mind is to keep eating...\n")
+    print(f"{player.name}: 'Have to keep eating... Still hungry!'\n")
+    print()
+    print("Outside the tomb, rumours spread of a ravenous beast.\n")
+    print("One that inhabits the tomb and feasts on those who dare enter.\n")
+    print("It is said that you can hear it feasting from the entrance...\n")
+    print("None dared to enter the tomb out of fear of being its next meal.\n")
+    print("------ENDING 2------\n")
+    try_again()
 
 
 def end_3():
