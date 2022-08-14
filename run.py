@@ -280,7 +280,8 @@ def path_4():
 
 def path_5():
     """
-    Displays the story and decisions for path 5.
+    Displays the story and decisions for path 5. Checks if
+    the player has the blessing.
     """
     print()
     print("You enter a fiery room filled with pits of lava.\n")
@@ -291,12 +292,52 @@ def path_5():
         print("You feel the power of the blessing radiating.\n")
         print("It seems to protect you from the heat!\n")
     print(f"{player.name}: 'Maybe I could try using those planks to get across?'\n")
-    print("What do you want to do?\n")
+    print("How do you want to get across?\n")
     print("1. Try to use the planks to build a bridge across.\n")
     print("2. Try to go through the lava.\n")
     if player.blessing:
         print("3. Use the power of the blessing to make it across.\n")
     lava_choice()
+    print("You wipe the sweat off your face and continue onward.\n")
+    feast_room()
+
+
+def lava_choice():
+    """
+    Asks the player for their input on how they wish to
+    cross the lava in path 5.
+    Checks if the player has the blessing and gives them an
+    extra option to cross.
+    If the player chooses option 1, gives them a 1 in 4 chance
+    to succeed in crossing.
+    """
+    if player.blessing:
+        cross_lava = input("Choose an option (1/2/3)\n")
+    else:
+        cross_lava = input("How do you wish to get across? (1/2)\n")
+    if cross_lava == "1":
+        print("You take the planks from the corner of the room.\n")
+        print("You build a bridge to the other side.\n")
+        print("You begin to slowly walk along the planks...\n")
+        cross_chance = random.randrange(1, 5)
+        if cross_chance > 3:
+            print("You successfully make it across!\n")
+        elif cross_chance <= 3:
+            print("A plank snaps as you walk over it!\n")
+            print("You fall into the pit of lava below!\n")
+            death()
+    elif cross_lava == "2":
+        print(f"{player.name}: 'Maybe it's just fake lava..?'\n")
+        print("You try to go through the lava without protection.\n")
+        print(f"{player.name}: 'Oh God! This was a bad idea!'\n")
+        print("The lava begins to burn you to a crisp!\n")
+        death()
+    elif cross_lava == "3" and player.blessing:
+        print("You use the power of the blessing to protect you.\n")
+        print("You walk through the lava and don't feel a thing!\n")
+        print(f"{player.name}: 'Wow! That was like walking on air!'\n")
+        print("You feel the power of the blessing fade...\n")
+        player.blessing = False
 
 
 def feast_room():
