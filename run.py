@@ -110,7 +110,7 @@ def start_game():
     else:
         print("Please type Yes or No!")
         start_game()
-
+    return
 
 def begin_adventure():
     """
@@ -138,6 +138,7 @@ def begin_adventure():
         print("Please type Yes or No!")
         time.sleep(2)
         begin_adventure()
+    return
 
 
 def enter_tomb():
@@ -160,6 +161,7 @@ def enter_tomb():
     print("To the right, you see a dark room filled with pots.\n")
     print(f"{player.name}: 'Hmm... Which path should I take?'\n")
     path_choice()
+    return
 
 
 def path_choice():
@@ -186,7 +188,7 @@ def path_choice():
     else:
         print("Please enter either Left or Right!")
         path_choice()
-        
+    return
 
 def path_1():
     """
@@ -212,6 +214,7 @@ def path_1():
     print("To the left, you notice an orange glow and an intense wave of heat.\n")
     print("To the right, you feel a cold chill and an ominious presence.\n")
     path_choice()
+    return
     
 
 def path_2():
@@ -231,6 +234,7 @@ def path_2():
     print("To the left, you hear a strange noise, almost like a deep snore.\n")
     print("To the right, you notice an orange glow and an intense wave of heat.\n")
     path_choice()
+    return
 
 
 def path_3():
@@ -249,6 +253,7 @@ def path_3():
     ghost_choice()
     print("You continue your adventure deeper into the tomb...\n")
     feast_room()
+    return
 
     
 
@@ -276,6 +281,7 @@ def path_4():
     if player.dagger:
         print("3. Use the black dagger to kill the troll.\n")
     troll_choice()
+    return
 
 
 def path_5():
@@ -300,6 +306,7 @@ def path_5():
     lava_choice()
     print("You wipe the sweat off your face and continue onward.\n")
     feast_room()
+    return
 
 
 def lava_choice():
@@ -338,6 +345,7 @@ def lava_choice():
         print(f"{player.name}: 'Wow! That was like walking on air!'\n")
         print("You feel the power of the blessing fade...\n")
         player.blessing = False
+    return
 
 
 def feast_room():
@@ -366,6 +374,8 @@ def feast_room():
     print("You continue to eat, and feel the urge to keep going.\n")
     eating_choice()
     print("You get up from the table and head towards the next room.\n")
+    chest_room()
+    return
 
 
 def food_choice():
@@ -396,6 +406,7 @@ def food_choice():
         print(f"{player.name}: 'My insides feel like they are going to explode!'\n")
         print("You fall to the floor as you begin to cough up blood!")
         death()
+    return
 
 
 def eating_choice():
@@ -414,6 +425,7 @@ def eating_choice():
     else:
         print("Please type Yes or No!")
         eating_choice()
+    return
 
 
 def door_choice():
@@ -445,6 +457,7 @@ def door_choice():
     else:
         print("Please type Yes or No!")
         door_choice()
+    return
 
 
 def pot_choice():
@@ -469,6 +482,7 @@ def pot_choice():
     else:
         print("Please type Yes or No!")
         pot_choice()
+    return
 
 
 def troll_choice():
@@ -519,6 +533,7 @@ def troll_choice():
         else:
             print("Please type 1 or 2!")
             troll_choice()
+    return
 
 
 def statue_room():
@@ -536,6 +551,7 @@ def statue_room():
     print("The doorway ahead opens!\n")
     print("You head through to the next area.\n")
     key_room()
+    return
 
 
 def statue_choice():
@@ -564,8 +580,10 @@ def statue_choice():
             print("You trip over on a piece of rock!\n")
             print("Everything fades to black as the sound of stone footsteps get closer...\n")
             death()
+            return
         print("Please enter Axe, Sword or Bow!")
         statue_choice()
+    return
 
 
 def key_room():
@@ -583,6 +601,9 @@ def key_room():
     print(f"{player.name}: 'This key seems like it may be important...'\n")
     key_choice()
     print("You continue through the tomb to the next area.\n")
+    chest_room()
+    return
+
 
 
 def chest_room():
@@ -624,6 +645,8 @@ def chest_room():
     if player.secret:
         print("3. Use the secret exit.\n")
     escape_choice()
+    end_4()
+    return
     
 
 def key_choice():
@@ -633,16 +656,17 @@ def key_choice():
     """
     key_take = input("Do you want to take the key? (Yes/No)\n")
     if key_take.lower().strip() == "yes":
-        player.key = True
         print("You slowly reach forward for the key...\n")
         print("You carefully take the key from the pedestal.\n")
         print("You obtained a gold key!\n")
+        player.key = True
     elif key_take.lower().strip() == "no":
         print(f"{player.name}: 'This could be a trap... I think I'll leave it.'\n")
         print("You decide not to take the key.\n")
     else:
         print("Please type Yes or No!")
         key_choice()
+    return
 
 
 def chest_choice():
@@ -654,7 +678,7 @@ def chest_choice():
     If no, runs the end_3 function.
     """
     open_chest = input("Try to open the chest? (Yes/No)\n")
-    if open_chest.lower().strip() == "yes":
+    if open_chest.lower().strip() == "yes" and player.key == False:
         print("You attempt to pick the lock on the chest...\n")
         print("The mechanism feels ancient...\n")
         open_chance = random.randrange(1, 4)
@@ -682,6 +706,7 @@ def chest_choice():
         print("You cut the gold leaves off the chest.\n")
         print(f"{player.name}: 'I'm more than happy with this.'\n")
         end_3()
+    return
 
 
 def escape_choice():
@@ -716,7 +741,32 @@ def escape_choice():
             print(f"{player.name}: 'What did I do to deserve this?'\n")
             print("A large boulder falls on top of you!\n")
             death()
-    
+    elif escape.strip() == "2":
+        print("You choose to stay and wait.\n")
+        print(f"{player.name}: 'Maybe if I wait, it might stop collapsing?'")
+        print("More and more debris falls in the tomb.\n")
+        print("Soon, the pillars supporting the room collapse!\n")
+        print(f"{player.name}: 'Maybe this wasn't such a good idea...'\n")
+        print("The room collapses and you are crushed!\n")
+        death()
+    elif escape.strip() == "3" and player.secret:
+        print("You head for the secret exit!\n")
+        print(f"{player.name}: 'I hope Arlay was telling the truth!'\n")
+        print("You find a secret passageway behind a pillar!\n")
+        print(f"{player.name}: 'This must be it!'\n")
+        print("You head down the secret passage...\n")
+        print("It's long and winding, but it's stable.\n")
+        print("Soon, you see daylight ahead.\n")
+        print(f"{player.name}: 'That must be the exit!'\n")
+        print("You head toward the light...\n")
+        print("And find yourself outside!\n")
+    else:
+        if player.secret:
+            print("Please type 1, 2 or 3!")
+        else:
+            print("Please type 1 or 2!")
+        escape_choice()
+    return
 
 
 def create_riddle():
@@ -764,6 +814,7 @@ def riddle_choice():
         print("Intense heat begins to burn your flesh...\n")
         print("Until nothing remained but ash.\n")
         death()
+    return
 
 
 def ghost_choice():
@@ -794,6 +845,7 @@ def ghost_choice():
     else:
         print("Please type Yes or No!")
         ghost_choice()
+    return
 
 
 def truth_choice():
@@ -836,6 +888,7 @@ def truth_choice():
     else:
         print("Please type Yes or No!")
         truth_choice()
+    return
 
 
 def try_again():
@@ -853,6 +906,7 @@ def try_again():
     else:
         print("Please type Yes or No!")
         try_again()
+    return
 
 
 def death():
@@ -875,6 +929,7 @@ def death():
     """)
     print("Better luck next time!\n")
     try_again()
+    return
 
 
 def end_1():
@@ -888,6 +943,7 @@ def end_1():
     print("And think about what the future has in store for you...\n")
     print("------ENDING 1------\n")
     try_again()
+    return
 
 
 def end_2():
@@ -908,6 +964,7 @@ def end_2():
     print("None dared to enter the tomb out of fear of being its next meal.\n")
     print("------ENDING 2------\n")
     try_again()
+    return
 
 
 def end_3():
@@ -924,12 +981,15 @@ def end_3():
     print("And begin living a life of luxury that you always dreamed of.\n")
     print("------ENDING 3------\n")
     try_again()
+    return
 
 
 def end_4():
     """
     Displays ending 4.
     """
+    print("END 4")
+    return
 
 
 
