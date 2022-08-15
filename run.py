@@ -6,7 +6,9 @@ import os
 import colorama
 from colorama import Fore, Back, Style
 
-colorama.init()
+import ascii_art
+
+colorama.init(autoreset=True)
 
 
 class PlayerAttributes:
@@ -46,35 +48,14 @@ def introduction():
     """
     os.system('cls||clear')
     print()
-    print("""
- _____                                          __  ___  ___
-|_   _|                                        / _| |  \/  |
-  | |_ __ ___  __ _ ___ _   _ _ __ ___    ___ | |_  | .  . | __ _ ______ _ _ __
-  | | '__/ _ \/ _` / __| | | | '__/ _ \  / _ \|  _| | |\/| |/ _` |_  / _` | '__|
-  | | | |  __/ (_| \__ \ |_| | | |  __/ | (_) | |   | |  | | (_| |/ / (_| | |
-  \_/_|  \___|\__,_|___/\__,_|_|  \___|  \___/|_|   \_|  |_/\__,_/___\__,_|_|
-    """)
+    print(ascii_art.TITLE)
     print()
-    print("""
-     ]╢▒▒▒▒▒▒╣▒▒▒▒▒▒▒▒▒╣▒▒▒▒▒╣▒▒▒╢╫╣╬▓▓▀▀╣
-     ╘▒▒▒▒▒▒▒▒▒░░░░░░░ ░░░░▒▒▒▒▒▒▒▒▒▒░▒▒▒╢
-      ▒▒░▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒░▒▒░▒
-      ╙▒░░▒▒▒▒▒▒▒╣▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒░░░░░░
-       ╚▒▒▒▒▒▒╣╣╣╣╣╣▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░╫╣▒▒`
-        "╬▒░░▒╢╣╣╣╣╣▒▒▒▒▒▒▒▒▒▒▒▒▒▒╢╫╣▒▒
-           ▀╩▓╣╢▓▓▓▓▓▓▓▓▓▓╣╣╢╣╣╣╣▒▓▀╙
-                 `"╙▓▓▓╣╣▓▓▓"``
-                    ╟▓▓▓▓▓▓⌐
-                     ╟╢▓▓▓M
-                     ▐▓▓▌▓
-                   ,╔╣▓╬▀▀▀╖,
-                 ╫▓▒╢╣╬@▒░╬╬╣▓Γ
-    """)
+    print(Fore.YELLOW + ascii_art.CHALICE)
     print()
     print("Long ago, a powerful king named Mazar reigned undisputed.\n")
     print("Until one day, he was betrayed by his son and his reign ended.\n")
-    print("""Before his death, Mazar built a great tomb and stashed his most
-prized treasure.\n""")
+    print("Before his death, Mazar built a great tomb and stashed his most \
+prized treasure.\n")
     print("It's wherabouts laid secret for untold years...\n")
     print("Until suddenly, rumours began to spread of its supposed location.\n")
     print("Many went in search for the great treasures within.\n")
@@ -96,7 +77,6 @@ def start_game():
     player.secret = False
     weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
     random_select.weapons = random.choice(weapon_combos)
-    create_riddle()
 
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
     if start_choice.lower().strip() == "yes":
@@ -792,7 +772,7 @@ def create_riddle():
         "'I'm light as a feather, yet the strongest man can't hold me for more than 5 minutes.'\n"
     ]
 
-    random_select.riddle = random.choice(riddle_list)
+    return riddle_list
 
 
 def riddle_choice():
@@ -801,21 +781,23 @@ def riddle_choice():
     the user, and checks the player answer against
     the correct answer.
     """
+    riddle = create_riddle()
+    random_select.riddle = random.choice(riddle)
     print(random_select.riddle)
     riddle_answer = input("'What am I?'\n")
-    if "candle" in riddle_answer.lower().strip() and random_select.riddle == "'I am tallest at the beginning of my life, but shortest at its end.'\n":
+    if ("candle" in riddle_answer.lower().strip() and random_select.riddle == riddle[0]):
         print("Correct!\n")
-    elif "future" in riddle_answer.lower().strip() and random_select.riddle == "'I am always in front of you, but can't be seen.'\n":
+    elif "future" in riddle_answer.lower().strip() and random_select.riddle == riddle[1]:
         print("Correct!\n")
-    elif "water" in riddle_answer.lower().strip() and random_select.riddle == "'Always in you, sometimes on you; If I surround you, I can kill you.'\n":
+    elif "water" in riddle_answer.lower().strip() and random_select.riddle == riddle[2]:
         print("Correct!\n")
-    elif "time" in riddle_answer.lower().strip() and random_select.riddle == "'I cause death yet make your day. I am your friend, but your enemy. I am the beginning and end.'\n":
+    elif "time" in riddle_answer.lower().strip() and random_select.riddle == riddle[3]:
         print("Correct!\n")
-    elif "fire" in riddle_answer.lower().strip() and random_select.riddle == "'Crimson I am born, yellow I dance, ebony I die.'\n":
+    elif "fire" in riddle_answer.lower().strip() and random_select.riddle == riddle[4]:
         print("Correct!\n")
-    elif "cloud" in riddle_answer.lower().strip() and random_select.riddle == "'I can fly but I have no wings. I can cry but I have no eyes.'\n":
+    elif "cloud" in riddle_answer.lower().strip() and random_select.riddle == riddle[5]:
         print("Correct!\n")
-    elif "breath" in riddle_answer.lower().strip() and random_select.riddle == "'I'm light as a feather, yet the strongest man can't hold me for more than 5 minutes.'\n":
+    elif "breath" in riddle_answer.lower().strip() and random_select.riddle == riddle[6]:
         print("Correct!\n")
     else:
         print("'YOU FOOL... You are not worthy to pass!'\n")
@@ -923,19 +905,8 @@ def death():
     Displays the death message.
     """
     print()
-    print("""
-
-▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄  ▐██▌
- ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌ ▐██▌
-  ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌ ▐██▌
-  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░▓█▄   ▌░██░▒▓█  ▄ ░▓█▄   ▌ ▓██▒
-  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░▒████▓ ░██░░▒████▒░▒████▓  ▒▄▄
-   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ▒▒▓  ▒ ░▓  ░░ ▒░ ░ ▒▒▓  ▒  ░▀▀▒
- ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░     ░ ▒  ▒  ▒ ░ ░ ░  ░ ░ ▒  ▒  ░  ░
- ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░     ░ ░  ░  ▒ ░   ░    ░ ░  ░     ░
- ░ ░         ░ ░     ░           ░     ░     ░  ░   ░     ░
- ░ ░                           ░                  ░
-    """)
+    print(Fore.RED + ascii_art.DEATH)
+    print()
     print("Better luck next time!\n")
     try_again()
     return
