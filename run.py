@@ -34,7 +34,6 @@ class Random:
 random_select = Random('', '')
 
 
-
 def introduction():
     """
     Opens the game with the title screen and introduction
@@ -43,16 +42,15 @@ def introduction():
     os.system('cls||clear')
     print()
     print("""
- _____                                          __  ___  ___                    
-|_   _|                                        / _| |  \/  |                    
-  | |_ __ ___  __ _ ___ _   _ _ __ ___    ___ | |_  | .  . | __ _ ______ _ _ __ 
+ _____                                          __  ___  ___
+|_   _|                                        / _| |  \/  |
+  | |_ __ ___  __ _ ___ _   _ _ __ ___    ___ | |_  | .  . | __ _ ______ _ _ __
   | | '__/ _ \/ _` / __| | | | '__/ _ \  / _ \|  _| | |\/| |/ _` |_  / _` | '__|
-  | | | |  __/ (_| \__ \ |_| | | |  __/ | (_) | |   | |  | | (_| |/ / (_| | |   
-  \_/_|  \___|\__,_|___/\__,_|_|  \___|  \___/|_|   \_|  |_/\__,_/___\__,_|_|   
+  | | | |  __/ (_| \__ \ |_| | | |  __/ | (_) | |   | |  | | (_| |/ / (_| | |
+  \_/_|  \___|\__,_|___/\__,_|_|  \___|  \___/|_|   \_|  |_/\__,_/___\__,_|_|
     """)
     print()
     print("""
-     
      ]╢▒▒▒▒▒▒╣▒▒▒▒▒▒▒▒▒╣▒▒▒▒▒╣▒▒▒╢╫╣╬▓▓▀▀╣
      ╘▒▒▒▒▒▒▒▒▒░░░░░░░ ░░░░▒▒▒▒▒▒▒▒▒▒░▒▒▒╢
       ▒▒░▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒░▒▒░▒
@@ -70,7 +68,8 @@ def introduction():
     print()
     print("Long ago, a powerful king named Mazar reigned undisputed.\n")
     print("Until one day, he was betrayed by his son and his reign ended.\n")
-    print("Before his death, Mazar built a great tomb and stashed his most prized treasure.\n")
+    print("""Before his death, Mazar built a great tomb and stashed his most
+prized treasure.\n""")
     print("It's wherabouts laid secret for untold years...\n")
     print("Until suddenly, rumours began to spread of its supposed location.\n")
     print("Many went in search for the great treasures within.\n")
@@ -101,7 +100,7 @@ def start_game():
             print(f"Welcome {player.name}. Your adventure awaits!\n")
             begin_adventure()
         else:
-            print("Your name must be more than 0 characters and no more than 30!")
+            print("Name must be more than 0 characters and no more than 30!")
             start_game()
     elif start_choice.lower().strip() == "no":
         print("Very well... Please take your time.")
@@ -111,6 +110,7 @@ def start_game():
         print("Please type Yes or No!")
         start_game()
     return
+
 
 def begin_adventure():
     """
@@ -190,6 +190,7 @@ def path_choice():
         path_choice()
     return
 
+
 def path_1():
     """
     Displays the story for and decisions for path 1. Sets
@@ -215,7 +216,7 @@ def path_1():
     print("To the right, you feel a cold chill and an ominious presence.\n")
     path_choice()
     return
-    
+
 
 def path_2():
     """
@@ -255,7 +256,6 @@ def path_3():
     feast_room()
     return
 
-    
 
 def path_4():
     """
@@ -365,7 +365,7 @@ def feast_room():
         print(f"{player.name}: 'I'll have some of the tasty, non-poisoned food thanks!'\n")
         print("As you begin to eat, the power of the blessing fades...\n")
         player.blessing = False
-    else: 
+    else:
         print("A sudden urge to eat overcomes you and you sit down to feast.\n")
         print(f"{player.name}: 'I'm starving!'\n")
         print("On the table is a steak, soup, apples and chicken.\n")
@@ -396,7 +396,7 @@ def food_choice():
     else:
         print("Please type steak, soup, apple or chicken!")
         food_choice()
-    
+
     poison_chance = random.randrange(1, 5)
     if poison_chance > 3:
         print(f"The {eat_food} was delicious!\n")
@@ -605,7 +605,6 @@ def key_room():
     return
 
 
-
 def chest_room():
     """
     Displays the story for the chest room.
@@ -647,7 +646,7 @@ def chest_room():
     escape_choice()
     end_4()
     return
-    
+
 
 def key_choice():
     """
@@ -672,13 +671,13 @@ def key_choice():
 def chest_choice():
     """
     Asks the player for input on opening the chest in
-    the chest room. 
+    the chest room.
     If yes, opens the chest with a 1 in 3 chance of success.
     If yes and has the key, opens the chest and loses the key.
     If no, runs the end_3 function.
     """
     open_chest = input("Try to open the chest? (Yes/No)\n")
-    if open_chest.lower().strip() == "yes" and player.key == False:
+    if open_chest.lower().strip() == "yes" and player.key is False:
         print("You attempt to pick the lock on the chest...\n")
         print("The mechanism feels ancient...\n")
         open_chance = random.randrange(1, 4)
@@ -706,6 +705,9 @@ def chest_choice():
         print("You cut the gold leaves off the chest.\n")
         print(f"{player.name}: 'I'm more than happy with this.'\n")
         end_3()
+    else:
+        print("Please type Yes or No!")
+        chest_choice()
     return
 
 
@@ -916,16 +918,16 @@ def death():
     print()
     print("""
 
-▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄  ▐██▌ 
- ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌ ▐██▌ 
-  ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌ ▐██▌ 
-  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░▓█▄   ▌░██░▒▓█  ▄ ░▓█▄   ▌ ▓██▒ 
-  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░▒████▓ ░██░░▒████▒░▒████▓  ▒▄▄  
-   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ▒▒▓  ▒ ░▓  ░░ ▒░ ░ ▒▒▓  ▒  ░▀▀▒ 
- ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░     ░ ▒  ▒  ▒ ░ ░ ░  ░ ░ ▒  ▒  ░  ░ 
- ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░     ░ ░  ░  ▒ ░   ░    ░ ░  ░     ░ 
- ░ ░         ░ ░     ░           ░     ░     ░  ░   ░     ░    
- ░ ░                           ░                  ░            
+▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄  ▐██▌
+ ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌ ▐██▌
+  ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌ ▐██▌
+  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░▓█▄   ▌░██░▒▓█  ▄ ░▓█▄   ▌ ▓██▒
+  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░▒████▓ ░██░░▒████▒░▒████▓  ▒▄▄
+   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ▒▒▓  ▒ ░▓  ░░ ▒░ ░ ▒▒▓  ▒  ░▀▀▒
+ ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░     ░ ▒  ▒  ▒ ░ ░ ░  ░ ░ ▒  ▒  ░  ░
+ ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░     ░ ░  ░  ▒ ░   ░    ░ ░  ░     ░
+ ░ ░         ░ ░     ░           ░     ░     ░  ░   ░     ░
+ ░ ░                           ░                  ░
     """)
     print("Better luck next time!\n")
     try_again()
@@ -941,7 +943,13 @@ def end_1():
     print("The treasure was tempting, but it wasn't worth risking your life.\n")
     print("You make your way back home to your family and friends.\n")
     print("And think about what the future has in store for you...\n")
-    print("------ENDING 1------\n")
+    print("""
+     ________________________
+    |                        |
+    |        ENDING 1        |
+    |   -No Price on Life-   |
+    |________________________|
+    """)
     try_again()
     return
 
@@ -962,7 +970,13 @@ def end_2():
     print("One that inhabits the tomb and feasts on those who dare enter.\n")
     print("It is said that you can hear it feasting from the entrance...\n")
     print("None dared to enter the tomb out of fear of being its next meal.\n")
-    print("------ENDING 2------\n")
+    print("""
+     ________________________
+    |                        |
+    |        ENDING 2        |
+    |   -Curse of Hunger-    |
+    |________________________|
+    """)
     try_again()
     return
 
@@ -979,7 +993,13 @@ def end_3():
     print("You managed to take them to the market and sell them for a small fortune.\n")
     print("You and your family move to the city with the riches you made.\n")
     print("And begin living a life of luxury that you always dreamed of.\n")
-    print("------ENDING 3------\n")
+    print("""
+     ________________________
+    |                        |
+    |        ENDING 3        |
+    |   -A Humble Future-    |
+    |________________________|
+    """)
     try_again()
     return
 
@@ -988,9 +1008,40 @@ def end_4():
     """
     Displays ending 4.
     """
-    print("END 4")
+    print()
+    print("You look down at the glistening gold chalice.\n")
+    print("After hundreds of years, the Treasure of Mazar was found.\n")
+    print("And it was held firmly in your grasp!\n")
+    print("You smile, thinking of the possibilities.\n")
+    print(f"{player.name}: 'I could be named a lord for finding this!'\n")
+    print(f"{player.name}: 'I'll be called the greatest explorer!'\n")
+    print(f"{player.name}: 'But first, let me get home...'\n")
+    print(f"{player.name}: 'I'm exhausted!'\n")
+    print("You make your way back home with your prize in hand.\n")
+    print("And rest up after an exhausting adventure.\n")
+    print("A day later, you travel to the capital.\n")
+    print("All eyes on you as you carry the fabled treasure with you.\n")
+    print("After seeking audience with the King, you display the chalice.\n")
+    print("And are granted lordship for your endeavours.\n")
+    print("The people look to you as a hero.\n")
+    print("And your name is spoken with reverence.\n")
+    print(f"{player.name}! The name that will be recorded for all history!\n")
+    print("But does your journey end here?\n")
+    print("Who knows what other treasures lay hidden...\n")
+    print("Waiting to be found...\n")
+    print(f"{player.name}: 'Whatever else is out there... I'll find it!'\n")
+    print("To be continued...?\n")
+    print("""
+     ________________________
+    |                        |
+    |        ENDING 4        |
+    |   -Treasure of Mazar-  |
+    |________________________|
+    """)
+    print("Congratulations! You found the Treasure of Mazar!\n")
+    print("Did you find the other 3 endings?\n")
+    try_again()
     return
-
 
 
 introduction()
