@@ -3,6 +3,11 @@ import time
 import sys
 import os
 
+import colorama
+from colorama import Fore, Back, Style
+
+colorama.init()
+
 
 class PlayerAttributes:
     """
@@ -118,13 +123,15 @@ def begin_adventure():
     between entering the tomb or not.
     """
     print()
-    print("Hearing the rumours of the tomb of Mazar, you set off in search of fortune.\n")
+    print("Hearing the rumours of the tomb of Mazar, you set off in search of \
+fortune.\n")
     print("You arrive at a misty ruin in a forest where the air is still.\n")
     print("Shivers run down your spine as you see a great doorway to a tomb.\n")
     print(f"{player.name}: 'This must be it... The tomb of Mazar!'\n")
-    print(f"{player.name}: 'Somewhere inside is the fabled Treasure of Mazar...'\n")
+    print(f"{player.name}: 'Somewhere inside is the fabled Treasure of Mazar..\
+.'\n")
     print(f"{player.name}: 'If I find that, I could live like a king!'\n")
-    print(f"{player.name}: 'But then again, nobody has ever come out alive...'\n")
+    print(f"{player.name}: 'But then again, nobody has ever come out alive.'\n")
     print(f"{player.name}: 'Should I really risk my life for this?'\n")
     enter_choice = input("Do you want to enter the tomb? (Yes/No)\n")
     if enter_choice.lower().strip() == "yes":
