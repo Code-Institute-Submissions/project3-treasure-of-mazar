@@ -24,7 +24,7 @@ player = PlayerAttributes('', '', False, False, False, False)
 class Random:
     """
     Stores random weapon combo data for the statues
-    room.
+    room and random riddle for path 1.
     """
     def __init__(self, weapons, riddle):
         self.weapons = weapons
@@ -667,6 +667,7 @@ def chest_choice():
         player.key = False
     elif open_chest.lower().strip() == "no":
         print(f"{player.name}: 'It might be a trap...'\n")
+        print("You look at the gold leaves decorating the chest.\n")
         print(f"{player.name}: 'These gold leaves would set me for life...'\n")
         print("You cut the gold leaves off the chest.\n")
         print(f"{player.name}: 'I'm more than happy with this.'")
@@ -868,6 +869,16 @@ def end_3():
     """
     Displays ending 3.
     """
+    print()
+    print("Happy with the golden leaves, you leave the tomb.\n")
+    print("The treasure was close, but would you have survived afterwards?\n")
+    print("You take the leaves back to your town.\n")
+    print("Nobody had seen such intricate crafting before.\n")
+    print("You managed to take them to the market and sell them for a small fortune.\n")
+    print("You and your family move to the city with the riches you made.\n")
+    print("And begin living a life of luxury that you always dreamed of.\n")
+    print("------ENDING 3------\n")
+    try_again()
 
 
 def end_4():
