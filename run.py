@@ -616,8 +616,15 @@ def chest_room():
     print(f"{player.name}: 'Oh no! I better get out of here!'\n")
     if player.secret:
         print("You remember the secret exit Arlay told you about.\n")
+        print("You have 3 options to choose from:\n")
+    else:
+        print("You have 2 options to choose from:\n")
+    print("1. Escape from the way you came.\n")
+    print("2. Stay where you are and wait.\n")
+    if player.secret:
+        print("3. Use the secret exit.\n")
+    escape_choice()
     
-
 
 def key_choice():
     """
@@ -641,7 +648,10 @@ def key_choice():
 def chest_choice():
     """
     Asks the player for input on opening the chest in
-    the chest room.
+    the chest room. 
+    If yes, opens the chest with a 1 in 3 chance of success.
+    If yes and has the key, opens the chest and loses the key.
+    If no, runs the end_3 function.
     """
     open_chest = input("Try to open the chest? (Yes/No)\n")
     if open_chest.lower().strip() == "yes":
@@ -663,15 +673,50 @@ def chest_choice():
         print("You pull out the gold key you found earlier.\n")
         print("You insert it into the lock.\n")
         print(f"{player.name}: 'Please don't be a fake...'\n")
-        print("Success! The key opens the lock!")
+        print("Success! The key opens the lock!\n")
         player.key = False
     elif open_chest.lower().strip() == "no":
         print(f"{player.name}: 'It might be a trap...'\n")
         print("You look at the gold leaves decorating the chest.\n")
         print(f"{player.name}: 'These gold leaves would set me for life...'\n")
         print("You cut the gold leaves off the chest.\n")
-        print(f"{player.name}: 'I'm more than happy with this.'")
+        print(f"{player.name}: 'I'm more than happy with this.'\n")
         end_3()
+
+
+def escape_choice():
+    """
+    Asks the user for input on escaping the tomb.
+    """
+    if player.secret:
+        escape = input("Please select an option. (1/2/3)\n")
+    else:
+        escape = input("Please select an option. (1/2)\n")
+
+    if escape.strip() == "1":
+        print(f"{player.name}: 'I better get out of here quick!'\n")
+        print("You start to run back the way you came in...\n")
+        print("You keep running and running as the tomb collapses...\n")
+        print("It feels like you're running a marathon.\n")
+        escape_chance = random.randrange(1, 4)
+        if escape_chance > 2:
+            print("You manage to narrowly avoid debris!\n")
+            print("You see some light shining through ahead!\n")
+            print(f"{player.name}: 'That must be the exit!'\n")
+            print("It seems that the doors to the tomb have fallen apart!\n")
+            print("You make a final sprint to the exit...\n")
+            print("And come out unscathed!\n")
+        elif escape_chance <= 2:
+            print("You are struck by a piece of falling debris!\n")
+            print("Your legs become stuck under the debris.\n")
+            print(f"{player.name}: 'No! Please! I was so close!'\n")
+            print("You try to move from under the debris...\n")
+            print("But can't move yourself!\n")
+            print("More debris falls around you...\n")
+            print(f"{player.name}: 'What did I do to deserve this?'\n")
+            print("A large boulder falls on top of you!\n")
+            death()
+    
 
 
 def create_riddle():
