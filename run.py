@@ -57,7 +57,8 @@ def introduction():
     print("Before his death, Mazar built a great tomb and stashed his most \
 prized treasure.\n")
     print("It's wherabouts laid secret for untold years...\n")
-    print("Until suddenly, rumours began to spread of its supposed location.\n")
+    print("Until suddenly, rumours began to spread of its supposed \
+location.\n")
     print("Many went in search for the great treasures within.\n")
     print("But not a single soul has returned to tell the tale.\n")
     print("Will you enter the tomb and succeed where others have failed...?\n")
@@ -106,20 +107,24 @@ def begin_adventure():
     print("Hearing the rumours of the tomb of Mazar, you set off in search of \
 fortune.\n")
     print("You arrive at a misty ruin in a forest where the air is still.\n")
-    print("Shivers run down your spine as you see a great doorway to a tomb.\n")
+    print("Shivers run down your spine as you see a great doorway to a \
+tomb.\n")
     print(f"{player.name}: 'This must be it... The tomb of Mazar!'\n")
     print(f"{player.name}: 'Somewhere inside is the fabled Treasure of Mazar..\
 .'\n")
     print(f"{player.name}: 'If I find that, I could live like a king!'\n")
-    print(f"{player.name}: 'But then again, nobody has ever come out alive.'\n")
+    print(f"{player.name}: 'But then again, nobody has ever come out \
+alive.'\n")
     print(f"{player.name}: 'Should I really risk my life for this?'\n")
     enter_choice = input("Do you want to enter the tomb? (Yes/No)\n")
     if enter_choice.lower().strip() == "yes":
         print(f"{player.name}: 'There's no turning back now! Here I go!'\n")
-        print("You push open the great tomb doors and make your way into the depths below.\n")
+        print("You push open the great tomb doors and make your way into the\
+ depths below.\n")
         enter_tomb()
     elif enter_choice.lower().strip() == "no":
-        print(f"{player.name}: 'No... I can't do this. My life is more valuable than any treasure.'\n")
+        print(f"{player.name}: 'No... I can't do this. My life is more\
+ valuable than any treasure.'\n")
         end_1()
     else:
         print("Please type Yes or No!")
@@ -190,7 +195,8 @@ def path_1():
     print("The door appears to be made of stone, and has two large handles.\n")
     print("Above the door sits a ghastly stone face staring down at you.\n")
     print(f"{player.name}: 'Creepy... It looks like it's judging me.'\n")
-    print(f"{player.name}: 'Should I try to open the door or go back the other way?'\n")
+    print(f"{player.name}: 'Should I try to open the door or go back the other\
+ way?'\n")
     door_choice()
     riddle_choice()
     print("'Impressive, mortal... You are wise indeed!'\n")
@@ -199,7 +205,8 @@ def path_1():
     print(f"{player.name}: 'Um, thank you. Talking... Stone face?'\n")
     print("The great door opens before you and you carefully go through.\n")
     print("As you travel onward, you come to another crossroad!\n")
-    print("To the left, you notice an orange glow and an intense wave of heat.\n")
+    print("To the left, you notice an orange glow and an intense wave of \
+heat.\n")
     print("To the right, you feel a cold chill and an ominious presence.\n")
     path_choice()
     return
@@ -214,13 +221,17 @@ def path_2():
 
     print()
     print("You enter a dark room filled with strange stone pots.\n")
-    print(f"{player.name}: 'What's up with these pots? I can't see inside them.'\n")
-    print("Inspecting the pots with your torch, they appear pitch black inside.\n")
+    print(f"{player.name}: 'What's up with these pots? I can't see inside \
+them.'\n")
+    print("Inspecting the pots with your torch, they appear pitch black \
+inside.\n")
     print("Every pot in the room seems to be the exact same.\n")
     pot_choice()
     print("Continuing into the tomb, you come to another crossroad!\n")
-    print("To the left, you hear a strange noise, almost like a deep snore.\n")
-    print("To the right, you notice an orange glow and an intense wave of heat.\n")
+    print("To the left, you hear a strange noise, almost like a deep \
+snore.\n")
+    print("To the right, you notice an orange glow and an intense wave of \
+heat.\n")
     path_choice()
     return
 
@@ -232,8 +243,10 @@ def path_3():
     print()
     print("You enter a large dark room illuminated only by your torch.\n")
     print("Cold air chills you to the bone and you feel uneasy.\n")
-    print(f"{player.name}: 'Brrr! It's freezing in here. Even my torch feels cold.'\n")
-    print("As you make your way through the room, you feel like you're being watched.\n")
+    print(f"{player.name}: 'Brrr! It's freezing in here. Even my torch feels\
+ cold.'\n")
+    print("As you make your way through the room, you feel like you're being\
+ watched.\n")
     print("Frost has formed on the floor making it hard to walk on.\n")
     print("Out of the corner of your eye, you spot a ghostly figure.\n")
     print("It watches you intently, almost as if it's beckoning you over.\n")
@@ -253,10 +266,14 @@ def path_4():
     print("You enter a small room covered in a strange substance.\n")
     print("A foul smell burns your nostrils as you try not to gag.\n")
     print(f"{player.name}: 'Eugh! What is that disgusting smell!?'\n")
-    print(f"{player.name}: 'And this substance is so sticky! It's hard to move!'\n")
-    print("As you make your way through the room, the strange noise gets louder.\n")
-    print("Soon, you come face to face with a large troll slumpt over in a doorway.\n")
-    print(f"{player.name}: 'He seems to be sleeping... He snores like my grandmother!'\n")
+    print(f"{player.name}: 'And this substance is so sticky! It's hard to\
+ move!'\n")
+    print("As you make your way through the room, the strange noise gets\
+ louder.\n")
+    print("Soon, you come face to face with a large troll slumpt over in a\
+ doorway.\n")
+    print(f"{player.name}: 'He seems to be sleeping... He snores like my\
+ grandmother!'\n")
     print("It appears the troll blocks the only path forward.\n")
     print("You may be able to sneak around, but you may risk waking him up.\n")
     print("There is a large rock on the floor next to the troll.\n")
@@ -280,11 +297,13 @@ def path_5():
     print("You enter a fiery room filled with pits of lava.\n")
     print("In the corner of the room are some wooden planks.\n")
     print("The exit to the room is on the opposite side of the lava.\n")
-    print(f"{player.name}: 'I need to get over to the other side somehow...'\n")
+    print(f"{player.name}: 'I need to get over to the other side\
+ somehow...'\n")
     if player.blessing:
         print("You feel the power of the blessing radiating.\n")
         print("It seems to protect you from the heat!\n")
-    print(f"{player.name}: 'Maybe I could try using those planks to get across?'\n")
+    print(f"{player.name}: 'Maybe I could try using those planks to get\
+ across?'\n")
     print("How do you want to get across?\n")
     print("1. Try to use the planks to build a bridge across.\n")
     print("2. Try to go through the lava.\n")
@@ -348,12 +367,15 @@ def feast_room():
     print("You approach the table and your stomach begins to growl.\n")
     if player.blessing:
         print("You sense that some of the food is poisoned.\n")
-        print("You feel the power of the blessing at work and identify the poisoned food.\n")
-        print(f"{player.name}: 'I'll have some of the tasty, non-poisoned food thanks!'\n")
+        print("You feel the power of the blessing at work and identify the\
+ poisoned food.\n")
+        print(f"{player.name}: 'I'll have some of the tasty, non-poisoned food\
+ thanks!'\n")
         print("As you begin to eat, the power of the blessing fades...\n")
         player.blessing = False
     else:
-        print("A sudden urge to eat overcomes you and you sit down to feast.\n")
+        print("A sudden urge to eat overcomes you and you sit down to\
+ feast.\n")
         print(f"{player.name}: 'I'm starving!'\n")
         print("On the table is a steak, soup, apples and chicken.\n")
         food_choice()
@@ -390,7 +412,8 @@ def food_choice():
     elif poison_chance <= 3:
         print(f"The {eat_food} causes you to heave!\n")
         print("It seems that it was poisoned!\n")
-        print(f"{player.name}: 'My insides feel like they are going to explode!'\n")
+        print(f"{player.name}: 'My insides feel like they are going to\
+ explode!'\n")
         print("You fall to the floor as you begin to cough up blood!")
         death()
     return
@@ -425,13 +448,17 @@ def door_choice():
     if open_door.lower().strip() == "yes":
         print(f"{player.name}: 'What's the worst that can happen?'\n")
         print("You try to pull on the door handles...\n")
-        print("The handles are cold and heavy and the door refuses to budge.\n")
+        print("The handles are cold and heavy and the door refuses to\
+ budge.\n")
         print("Suddenly a loud voice booms through the room!\n")
         print("'FOOLISH MORTAL! Who dares disturb this tomb?'\n")
-        print("In a panic, you look around the room, wondering where the voice came from.\n")
-        print("You see the statue above the door staring at you with red eyes!\n")
+        print("In a panic, you look around the room, wondering where the voice\
+ came from.\n")
+        print("You see the statue above the door staring at you with red\
+ eyes!\n")
         print(f"{player.name}: 'Um, my name is {player.name}!'\n")
-        print(f"'Very well, {player.name.upper()}! Answer my riddle and you may pass.'\n")
+        print(f"'Very well, {player.name.upper()}! Answer my riddle and you\
+ may pass.'\n")
         print("'But fail, and you will be reduced to ash where you stand!'\n")
         print("You try to move, but you seem to be frozen in place!\n")
         print(f"{player.name}: 'I guess I have no choice...'\n")
@@ -439,7 +466,8 @@ def door_choice():
         print("'Answer me this:'\n")
     elif open_door.lower().strip() == "no":
         print(f"{player.name}: 'I think I preferred the other room...'\n")
-        print("You decide to turn around and head back to the room with pots.\n")
+        print("You decide to turn around and head back to the room with\
+ pots.\n")
         path_2()
     else:
         print("Please type Yes or No!")
@@ -453,19 +481,23 @@ def pot_choice():
     to search the pots in path 2 and displays an output
     depending on their choice.
     """
-    choice = input("Do you wish to put your hand in and search the pots? (Yes/No)\n")
+    choice = input("Do you wish to put your hand in and search the pots?\
+ (Yes/No)\n")
     if choice.lower().strip() == "yes":
         print("You put your hand into the pot...\n")
         print("It feels like your hand was somehow detached from your body.\n")
         print("Suddenly, you feel an odd, cold object!\n")
         print("You begin to pull...\n")
         print("And a pitch black dagger comes out!\n")
-        print(f"{player.name}: 'Whoa! It seems to absorb all the light around it...'\n")
+        print(f"{player.name}: 'Whoa! It seems to absorb all the light around\
+ it...'\n")
         print("You put the dagger in your bag.\n")
         player.dagger = True
     elif choice.lower().strip() == "no":
-        print(f"{player.name}: 'I have a bad feeling about putting my hand in those pots.'\n")
-        print("You decide not to search the pots and carry on to the next room.\n")
+        print(f"{player.name}: 'I have a bad feeling about putting my hand in\
+ those pots.'\n")
+        print("You decide not to search the pots and carry on to the next\
+ room.\n")
     else:
         print("Please type Yes or No!")
         pot_choice()
@@ -498,7 +530,8 @@ def troll_choice():
     elif choice.strip() == "2":
         print("You attempt to pick up the large rock.\n")
         print("It's heavy but you manage to pick it up.\n")
-        print("You lift the rock above your head and bring it down on the troll!\n")
+        print("You lift the rock above your head and bring it down on the\
+ troll!\n")
         print(f"{player.name}: 'Hiyah!'\n")
         print("The rock bounces off the troll without a scratch.\n")
         print("Suddenly, the troll wakes up!\n")
@@ -508,7 +541,8 @@ def troll_choice():
     elif choice.strip() == "3" and player.dagger:
         print("You take out the pitch black dagger...\n")
         print("You plunge the dagger into the skull of the troll!\n")
-        print("The troll lets out a blood curdling cry before falling silent.\n")
+        print("The troll lets out a blood curdling cry before falling\
+ silent.\n")
         print(f"{player.name}: 'Wow! I can't believe I did it!'\n")
         print("The black dagger shatters and is now useless.\n")
         print("You walk around the dead troll and continue on.\n")
@@ -548,26 +582,33 @@ def statue_choice():
     prints the output depending on whether they were correct
     or not.
     """
-    print(f"{player.name}: 'The two statues with weapons are holding a {random_select.weapons}.'\n")
+    print(f"{player.name}: 'The two statues with weapons are holding a\
+ {random_select.weapons}.'\n")
     print(f"{player.name}: 'What should I take from the table?'\n")
     weapon_choice = input("Axe, Sword or Bow?\n")
-    if weapon_choice.lower().strip() == "axe" and random_select.weapons == "Bow and Sword":
+    if (weapon_choice.lower().strip() == "axe" and
+            random_select.weapons == "Bow and Sword"):
         print("You take the Axe and put it on the statue...\n")
-    elif weapon_choice.lower().strip() == "sword" and random_select.weapons == "Bow and Axe":
+    elif (weapon_choice.lower().strip() == "sword" and
+            random_select.weapons == "Bow and Axe"):
         print("You take the Sword and put it on the statue...\n")
-    elif weapon_choice.lower().strip() == "bow" and random_select.weapons == "Sword and Axe":
+    elif (weapon_choice.lower().strip() == "bow" and
+            random_select.weapons == "Sword and Axe"):
         print("You take the Bow and put it on the statue...\n")
     else:
-        if weapon_choice.lower().strip() == "axe" or weapon_choice.lower().strip() == "bow" or weapon_choice.lower().strip() == "sword":
-            print(f"You take the {weapon_choice} and put it on the statue...\n")
+        if (weapon_choice.lower().strip() == "axe" or
+                weapon_choice.lower().strip() == "bow" or
+                weapon_choice.lower().strip() == "sword"):
+            print(f"You take the {weapon_choice} and put it on the\
+ statue...\n")
             print("Nothing seems to happen...\n")
             print("Suddenly, the statues come to life!\n")
             print(f"{player.name}: 'Oh no! I messed up!'\n")
             print("The statues get closer and you try to run...\n")
             print("You trip over on a piece of rock!\n")
-            print("Everything fades to black as the sound of stone footsteps get closer...\n")
+            print("Everything fades to black as the sound of stone footsteps\
+ get closer...\n")
             death()
-            return
         print("Please enter Axe, Sword or Bow!")
         statue_choice()
     return
@@ -578,7 +619,8 @@ def key_room():
     Displays the story for the key room.
     """
     print()
-    print("You enter a tiny room illuminated by a glowing white crystal above.\n")
+    print("You enter a tiny room illuminated by a glowing white crystal\
+ above.\n")
     print("In the centre of the room is a pedestal shaped like 2 hands.\n")
     print(f"{player.name}: 'This room feels different to the others.'\n")
     print(f"{player.name}: 'It's so calm and peaceful...'\n")
@@ -647,7 +689,8 @@ def key_choice():
         print("You obtained a gold key!\n")
         player.key = True
     elif key_take.lower().strip() == "no":
-        print(f"{player.name}: 'This could be a trap... I think I'll leave it.'\n")
+        print(f"{player.name}: 'This could be a trap... I think I'll leave\
+ it.'\n")
         print("You decide not to take the key.\n")
     else:
         print("Please type Yes or No!")
@@ -760,16 +803,21 @@ def escape_choice():
 
 def create_riddle():
     """
-    Generates a random riddle from a list.
+    Stores a list of riddles.
     """
     riddle_list = [
-        "'I am tallest at the beginning of my life, but shortest at its end.'\n",
+        "'I am tallest at the beginning of my life,\
+ but shortest at its end.'\n",
         "'I am always in front of you, but can't be seen.'\n",
-        "'Always in you, sometimes on you; If I surround you, I can kill you.'\n",
-        "'I cause death yet make your day. I am your friend, but your enemy. I am the beginning and end.'\n",
+        "'Always in you, sometimes on you; If I surround\
+ you, I can kill you.'\n",
+        "'I cause death yet make your day. I am your friend,\
+ but your enemy. I am the beginning and end.'\n",
         "'Crimson I am born, yellow I dance, ebony I die.'\n",
-        "'I can fly but I have no wings. I can cry but I have no eyes.'\n",
-        "'I'm light as a feather, yet the strongest man can't hold me for more than 5 minutes.'\n"
+        "'I can fly but I have no wings. I can cry but I\
+ have no eyes.'\n",
+        "'I'm light as a feather, yet the strongest man can't\
+ hold me for more than 5 minutes.'\n"
     ]
 
     return riddle_list
@@ -783,24 +831,31 @@ def riddle_choice():
     """
     riddle = create_riddle()
     random_select.riddle = random.choice(riddle)
-    print(random_select.riddle)
+    print(Fore.RED + random_select.riddle)
     riddle_answer = input("'What am I?'\n")
-    if ("candle" in riddle_answer.lower().strip() and random_select.riddle == riddle[0]):
+    if ("candle" in riddle_answer.lower().strip() and
+            random_select.riddle == riddle[0]):
         print("Correct!\n")
-    elif "future" in riddle_answer.lower().strip() and random_select.riddle == riddle[1]:
+    elif ("future" in riddle_answer.lower().strip() and
+            random_select.riddle == riddle[1]):
         print("Correct!\n")
-    elif "water" in riddle_answer.lower().strip() and random_select.riddle == riddle[2]:
+    elif ("water" in riddle_answer.lower().strip() and
+            random_select.riddle == riddle[2]):
         print("Correct!\n")
-    elif "time" in riddle_answer.lower().strip() and random_select.riddle == riddle[3]:
+    elif ("time" in riddle_answer.lower().strip() and
+            random_select.riddle == riddle[3]):
         print("Correct!\n")
-    elif "fire" in riddle_answer.lower().strip() and random_select.riddle == riddle[4]:
+    elif ("fire" in riddle_answer.lower().strip() and
+            random_select.riddle == riddle[4]):
         print("Correct!\n")
-    elif "cloud" in riddle_answer.lower().strip() and random_select.riddle == riddle[5]:
+    elif ("cloud" in riddle_answer.lower().strip() and
+            random_select.riddle == riddle[5]):
         print("Correct!\n")
-    elif "breath" in riddle_answer.lower().strip() and random_select.riddle == riddle[6]:
+    elif ("breath" in riddle_answer.lower().strip() and
+            random_select.riddle == riddle[6]):
         print("Correct!\n")
     else:
-        print("'YOU FOOL... You are not worthy to pass!'\n")
+        print(Fore.RED + "'YOU FOOL..." + " You are not worthy to pass!'\n")
         print("Suddenly a great flash of light envelopes the room.\n")
         print("Intense heat begins to burn your flesh...\n")
         print("Until nothing remained but ash.\n")
@@ -822,7 +877,8 @@ def ghost_choice():
         print(f"{player.name}: 'How do you know my name?'\n")
         print("???: 'I know the name of all who enter this tomb.'\n")
         print(f"???: 'Now Answer me {player.name}: Why have you come?'\n")
-        print("You're unsure how this figure may react to you coming for the treasure.\n")
+        print("You're unsure how this figure may react to you coming for the\
+ treasure.\n")
         truth_choice()
     elif approach_ghost.lower().strip() == "no":
         print(f"{player.name}: 'I'll pretend I didn't see that.\n")
@@ -844,23 +900,28 @@ def truth_choice():
     Asks the user for input on telling the truth.
     Displays an outcome depending on their choice.
     """
-    tell_truth = input(f"{player.name}: 'Should I tell it the truth?' (Yes/No)\n")
+    tell_truth = input(f"{player.name}: 'Should I tell it the truth?'\
+ (Yes/No)\n")
     if tell_truth.lower().strip() == "yes":
         print(f"{player.name}: 'I have come seeking the Treasure of Mazar.'\n")
         print("The figure stares at you, making you feel more uneasy.\n")
         print(f"???: 'I sense truth in your words {player.name}.'\n")
         print("???: 'After all, that is the reason for all who come here.\n")
-        print("???: 'My name is Arlay, and I was once the architect of this tomb.'\n")
+        print("???: 'My name is Arlay, and I was once the architect of this\
+ tomb.'\n")
         print("Arlay: 'But I was killed here after its completion.'\n")
-        print("Arlay: 'King Mazar betrayed me and cursed my soul to wander here.'\n")
+        print("Arlay: 'King Mazar betrayed me and cursed my soul to wander\
+ here.'\n")
         print("Arlay: 'I have long awaited someone to make it this far.'\n")
         print(f"Arlay: 'You, {player.name}, are the only one who has.'\n")
         print("Arlay: 'Allow me to tell you the secret of this place.'\n")
-        print("Arlay: 'So that you may find what you seek and leave unharmed.'\n")
+        print("Arlay: 'So that you may find what you seek and leave\
+ unharmed.'\n")
         print(f"{player.name}: 'Okay, but why help me?'\n")
         print("Arlay: 'So that I can have my revenge on King Mazar...'\n")
         print("Arlay: 'Listen closely.'\n")
-        print("Arlay: 'When you take the treasure, the tomb is set to collapse.'\n")
+        print("Arlay: 'When you take the treasure, the tomb is set to\
+ collapse.'\n")
         print("Arlay: 'You can exit from where you came if you are lucky.'\n")
         print("Arlay: 'But there is a secret exit in the treasure room.'\n")
         print("Arlay: 'Go through the secret exit and you will be safe.'\n")
@@ -869,12 +930,15 @@ def truth_choice():
         print(f"{player.name}: 'Thank you Arlay. I won't let you down!'\n")
     elif tell_truth.lower().strip() == "no":
         print(f"{player.name}: 'I am just exploring!'\n")
-        print("The figure stares at you, and you feel a chill down your spine.\n")
+        print("The figure stares at you, and you feel a chill down your\
+ spine.\n")
         print("???: 'LIES!'\n")
-        print("The figure lets out a piercing scream, causing your ears to ring.\n")
+        print("The figure lets out a piercing scream, causing your ears to\
+ ring.\n")
         print("You start feeling nauseous as the room starts to spin.\n")
         print("You collapse on the floor and hear a voice.\n")
-        print(f"???: 'You are a fool {player.name}. Lies do not get past me.'\n")
+        print(f"???: 'You are a fool {player.name}. Lies do not get past\
+ me.'\n")
         death()
     else:
         print("Please type Yes or No!")
@@ -918,7 +982,8 @@ def end_1():
     """
     print()
     print("You decide to turn back and live another day.\n")
-    print("The treasure was tempting, but it wasn't worth risking your life.\n")
+    print("The treasure was tempting, but it wasn't worth risking your\
+ life.\n")
     print("You make your way back home to your family and friends.\n")
     print("And think about what the future has in store for you...\n")
     print("""
@@ -968,7 +1033,8 @@ def end_3():
     print("The treasure was close, but would you have survived afterwards?\n")
     print("You take the leaves back to your town.\n")
     print("Nobody had seen such intricate crafting before.\n")
-    print("You managed to take them to the market and sell them for a small fortune.\n")
+    print("You managed to take them to the market and sell them for a small\
+ fortune.\n")
     print("You and your family move to the city with the riches you made.\n")
     print("And begin living a life of luxury that you always dreamed of.\n")
     print("""
