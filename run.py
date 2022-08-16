@@ -105,6 +105,7 @@ def start_game():
     random_select.weapons = random.choice(weapon_combos)
 
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
+
     if start_choice.lower().strip() == "yes":
         player.name = input("What is your name?\n")
         if len(player.name.strip()) > 0 and len(player.name.strip()) <= 30:
@@ -143,19 +144,22 @@ def begin_adventure():
            "alive.'\n\n")
     typing(f"{player.name}: 'Should I really risk my life for this?'\n\n")
     enter_choice = input("Do you want to enter the tomb? (Yes/No)\n")
-    if enter_choice.lower().strip() == "yes":
-        typing(f"{player.name}: 'There's no turning back now! Here I go!'\n\n")
-        typing("You push open the great tomb doors and make your way into the "
-               "depths below.\n\n")
-        enter_tomb()
-    elif enter_choice.lower().strip() == "no":
-        typing(f"{player.name}: 'No... I can't do this. My life is more\n\n"
-               "valuable than any treasure.'\n")
-        end_1()
-    else:
-        print("Please type Yes or No!")
-        time.sleep(A)
-        begin_adventure()
+
+    while True:
+        if enter_choice.lower().strip() == "yes":
+            typing(f"{player.name}: 'There's no turning back now! Here I go!'"
+                   "\n\n")
+            typing("You push open the great tomb doors and make your way into "
+                   "the depths below.\n\n")
+            enter_tomb()
+            break
+        elif enter_choice.lower().strip() == "no":
+            typing(f"{player.name}: 'No... I can't do this. My life is more\n"
+                   "valuable than any treasure.'\n\n")
+            end_1()
+            break
+        else:
+            enter_choice = input("Please type Yes or No!\n")
     return
 
 
@@ -214,7 +218,8 @@ def path_choice():
 def path_1():
     """
     Displays the story for and decisions for path 1. Sets
-    the player location to path 1.
+    the player location to path 1. Sets the player blessing to
+    True if they answer the riddle correct.
     """
     player.location = "Path 1"
 
@@ -244,6 +249,51 @@ def path_1():
     return
 
 
+def door_choice():
+    """
+    Asks the user for their input on whether they wish to
+    open the door in path 1 and displays an output depending
+    on their choice.
+    """
+    open_door = input("Open the door? (Yes/No)\n")
+
+    if open_door.lower().strip() == "yes":
+        typing(f"{player.name}: 'What's the worst that can happen?'\n\n")
+        typing("You try to pull on the door handles...\n\n")
+        typing("The handles are cold and heavy and the door refuses to "
+               "budge.\n\n")
+        typing("Suddenly a loud voice booms through the room!\n")
+        print(Fore.RED + Style.BRIGHT)
+        typing("'FOOLISH MORTAL! Who dares disturb this tomb?'\n")
+        print(Style.RESET_ALL)
+        typing("In a panic, you look around the room, wondering where the "
+               "voice came from.\n\n")
+        typing("You see the statue above the door staring at you with red "
+               "eyes!\n\n")
+        typing(f"{player.name}: 'Um, my name is {player.name}!'\n")
+        print(Fore.RED + Style.BRIGHT)
+        typing(f"'Very well, {player.name.upper()}! Answer my riddle and\n"
+               "you may pass.'\n\n")
+        typing("'But fail, and you will be reduced to ash where you stand!'"
+               "\n")
+        print(Style.RESET_ALL)
+        typing("You try to move, but you seem to be frozen in place!\n\n")
+        typing(f"{player.name}: 'I guess I have no choice...'\n\n")
+        typing(f"{player.name}: 'What is your riddle?'\n")
+        print(Fore.RED + Style.BRIGHT)
+        typing("'Answer me this:'\n")
+        print(Style.RESET_ALL)
+    elif open_door.lower().strip() == "no":
+        typing(f"{player.name}: 'I think I preferred the other room...'\n\n")
+        typing("You decide to turn around and head back to the room with "
+               "pots.\n\n")
+        path_2()
+    else:
+        print("Please type Yes or No!")
+        door_choice()
+    return
+
+
 def path_2():
     """
     Displays the story and decisions for path 2. Sets
@@ -268,6 +318,38 @@ def path_2():
     return
 
 
+def pot_choice():
+    """
+    Asks the user for their input on whether they wish
+    to search the pots in path 2 and displays an output
+    depending on their choice. Sets the dagger variable to
+    True if the pots are searched.
+    """
+    choice = input("Put your hand in and search the pots? (Yes/No)\n")
+
+    if choice.lower().strip() == "yes":
+        typing("You put your hand into the pot...\n\n")
+        typing("It feels like your hand was somehow detached from your body."
+               "\n\n")
+        typing("Suddenly, you feel an odd, cold object!\n\n")
+        typing("You begin to pull...\n\n")
+        time.sleep(A)
+        typing("And a pitch black dagger comes out!\n\n")
+        typing(f"{player.name}: 'Whoa! It seems to absorb all the light\n"
+               "around it...'\n\n")
+        typing("You put the dagger in your bag.\n\n")
+        player.dagger = True
+    elif choice.lower().strip() == "no":
+        typing(f"{player.name}: 'I have a bad feeling about putting my hand\n"
+               "in those pots.'\n\n")
+        typing("You decide not to search the pots and carry on to the next "
+               "room.\n\n")
+    else:
+        print("Please type Yes or No!")
+        pot_choice()
+    return
+
+
 def path_3():
     """
     Displays the story and decisions for path 3.
@@ -287,6 +369,110 @@ def path_3():
     ghost_choice()
     typing("You continue your adventure deeper into the tomb...\n\n")
     feast_room()
+    return
+
+
+def ghost_choice():
+    """
+    Asks the user for input on approaching the ghost.
+    Displays an outcome depending on their choice.
+    """
+    approach_ghost = input("Approach the figure? (Yes/No)\n")
+
+    if approach_ghost.lower().strip() == "yes":
+        typing("You decide to approach the ominious figure...\n\n")
+        typing(f"{player.name}: 'Hello? Can you hear me?'\n")
+        print(Fore.MAGENTA + Style.BRIGHT)
+        typing(f"???: '{player.name} why have you come?'\n")
+        print(Style.RESET_ALL)
+        typing("You feel a chill as the figure speaks.\n\n")
+        typing(f"{player.name}: 'How do you know my name?'\n")
+        print(Fore.MAGENTA + Style.BRIGHT)
+        typing("???: 'I know the name of all who enter this tomb.'\n\n")
+        typing(f"???: 'Now Answer me {player.name}: Why have you come?'\n")
+        print(Style.RESET_ALL)
+        typing("You're unsure how this figure may react to you coming for the "
+               "treasure.\n\n")
+        truth_choice()
+    elif approach_ghost.lower().strip() == "no":
+        typing(f"{player.name}: 'I'll pretend I didn't see that.\n\n")
+        typing("You decide to continue your journey.\n\n")
+        typing("As you walk on, you begin to get colder and colder...\n\n")
+        typing("Your legs begin to seize in the freezing cold...\n\n")
+        typing("And you fall to the ground, unable to breathe.\n\n")
+        typing("You hear an ominious voice just before your senses fail.\n\n")
+        print(Fore.MAGENTA + Style.BRIGHT)
+        typing(f"???: 'You cannot escape fate {player.name}...'\n")
+        print(Style.RESET_ALL)
+        time.sleep(A)
+        death()
+    else:
+        print("Please type Yes or No!")
+        ghost_choice()
+    return
+
+
+def truth_choice():
+    """
+    Asks the user for input on telling the truth.
+    Displays an outcome depending on their choice.
+    """
+    tell_truth = input(f"{player.name}: 'Should I tell it the truth?'\n"
+                       "(Yes/No)\n")
+
+    if tell_truth.lower().strip() == "yes":
+        typing(f"{player.name}: 'I have come seeking the Treasure of Mazar.'"
+               "\n\n")
+        typing("The figure stares at you, making you feel more uneasy.\n")
+        print(Fore.MAGENTA + Style.BRIGHT)
+        typing(f"???: 'I sense truth in your words {player.name}.'\n\n")
+        typing("???: 'After all, that is the reason for all who come here.'"
+               "\n\n")
+        typing("???: 'My name is Arlay, and I was once the architect of this "
+               "tomb.'\n\n")
+        typing("Arlay: 'But I was killed here after its completion.'\n\n")
+        typing("Arlay: 'King Mazar betrayed me and cursed my soul to wander "
+               "here.'\n\n")
+        typing("Arlay: 'I have long awaited someone to make it this far.'\n\n")
+        typing(f"Arlay: 'You, {player.name}, are the only one who has.'\n\n")
+        typing("Arlay: 'Allow me to tell you the secret of this place.'\n\n")
+        typing("Arlay: 'So that you may find what you seek and leave "
+               "unharmed.'\n")
+        print(Style.RESET_ALL)
+        typing(f"{player.name}: 'Okay, but why help me?'\n")
+        print(Fore.MAGENTA + Style.BRIGHT)
+        typing("Arlay: 'So that I can have my revenge on King Mazar...'\n\n")
+        typing("Arlay: 'Listen closely.'\n\n")
+        typing("Arlay: 'When you take the treasure, the tomb is set to "
+               "collapse.'\n\n")
+        typing("Arlay: 'You can exit from where you came if you are lucky.'"
+               "\n\n")
+        typing("Arlay: 'But there is a secret exit in the treasure room.'\n\n")
+        typing("Arlay: 'Go through the secret exit and you will be safe.'\n")
+        print(Style.RESET_ALL)
+        typing("You make a note of the secret exit.\n\n")
+        player.secret = True
+        typing(f"{player.name}: 'Thank you Arlay. I won't let you down!'\n\n")
+    elif tell_truth.lower().strip() == "no":
+        typing(f"{player.name}: 'I am just exploring!'\n\n")
+        typing("The figure stares at you, and you feel a chill down your "
+               "spine.\n")
+        print(Fore.RED + Style.BRIGHT)
+        typing("???: 'LIES!'\n")
+        print(Style.RESET_ALL)
+        typing("The figure lets out a piercing scream, causing your ears to "
+               "ring.\n\n")
+        typing("You start feeling nauseous as the room starts to spin.\n\n")
+        typing("You collapse on the floor and hear a voice.\n\n")
+        print(Fore.MAGENTA + Style.BRIGHT)
+        typing(f"???: 'You are a fool {player.name}...\nLies do not get past "
+               "me.'\n")
+        print(Style.RESET_ALL)
+        time.sleep(A)
+        death()
+    else:
+        print("Please type Yes or No!")
+        truth_choice()
     return
 
 
@@ -319,6 +505,64 @@ def path_4():
     if player.dagger:
         typing("3. Use the black dagger to kill the troll.\n")
     troll_choice()
+    return
+
+
+def troll_choice():
+    """
+    Asks the user for their input on what they wish
+    to do with the troll in path 4 and displays an
+    output depending on their choice.
+    If user enters 1, rolls a 1 in 4 chance of sneaking
+    past the troll.
+    """
+    if player.dagger:
+        choice = input("Choose an option: (1/2/3)\n")
+    else:
+        choice = input("Choose an option: (1/2)\n")
+
+    if choice.strip() == "1":
+        typing("You try to sneak around the troll.\n\n")
+        typing("As you get close, the troll begins to grumble...\n\n")
+        time.sleep(A)
+        sneak_chance = random.randrange(1, 5)
+        if sneak_chance > 3:
+            typing("You successfully sneak past the troll!\n\n")
+            typing(f"{player.name}: 'Phew! that was close!'\n\n")
+            typing("You continue on through the tomb.\n\n")
+            statue_room()
+        elif sneak_chance <= 3:
+            typing("You fail to sneak past the troll and it wakes up!\n\n")
+            typing("The troll grabs you and begins to eat you!\n\n")
+            death()
+    elif choice.strip() == "2":
+        typing("You attempt to pick up the large rock.\n\n")
+        typing("It's heavy but you manage to pick it up.\n\n")
+        typing("You lift the rock above your head and bring it down on the "
+               "troll!\n\n")
+        typing(f"{player.name}: 'Hiyah!'\n\n")
+        typing("The rock bounces off the troll without a scratch.\n\n")
+        typing("Suddenly, the troll wakes up!\n\n")
+        typing(f"{player.name}: 'Uh oh!'\n\n")
+        typing("The troll pummels you with his fist, leaving a bloody mess!"
+               "\n\n")
+        death()
+    elif choice.strip() == "3" and player.dagger:
+        typing("You take out the pitch black dagger...\n\n")
+        typing("You plunge the dagger into the skull of the troll!\n\n")
+        typing("The troll lets out a blood curdling cry before falling "
+               "silent.\n\n")
+        typing(f"{player.name}: 'Wow! I can't believe I did it!'\n\n")
+        typing("The black dagger shatters and is now useless.\n\n")
+        typing("You walk around the dead troll and continue on.\n\n")
+        statue_room()
+    else:
+        if player.dagger:
+            print("Please type 1, 2 or 3!")
+            troll_choice()
+        else:
+            print("Please type 1 or 2!")
+            troll_choice()
     return
 
 
@@ -429,6 +673,7 @@ def food_choice():
     3/4 chance to eat poison food and 1/4 chance to not.
     """
     eat_food = input("What food do you wish to eat?\n")
+
     if eat_food.lower().strip() == "steak":
         typing("You take a bite of the steak...\n\n")
     elif eat_food.lower().strip() == "soup":
@@ -463,6 +708,7 @@ def eating_choice():
     an output depending on their choice.
     """
     keep_eating = input("Do you want to continue eating? (Yes/No)\n")
+
     if keep_eating.lower().strip() == "yes":
         typing(f"{player.name}: 'Can't stop now... I'm too hungry!'\n\n")
         time.sleep(A)
@@ -474,135 +720,6 @@ def eating_choice():
     else:
         print("Please type Yes or No!")
         eating_choice()
-    return
-
-
-def door_choice():
-    """
-    Asks the user for their input on whether they wish to
-    open the door in path 1 and displays an output depending
-    on their choice.
-    """
-    open_door = input("Open the door? (Yes/No)\n")
-    if open_door.lower().strip() == "yes":
-        typing(f"{player.name}: 'What's the worst that can happen?'\n\n")
-        typing("You try to pull on the door handles...\n\n")
-        typing("The handles are cold and heavy and the door refuses to "
-               "budge.\n\n")
-        typing("Suddenly a loud voice booms through the room!\n")
-        print(Fore.RED + Style.BRIGHT)
-        typing("'FOOLISH MORTAL! Who dares disturb this tomb?'\n")
-        print(Style.RESET_ALL)
-        typing("In a panic, you look around the room, wondering where the "
-               "voice came from.\n\n")
-        typing("You see the statue above the door staring at you with red "
-               "eyes!\n\n")
-        typing(f"{player.name}: 'Um, my name is {player.name}!'\n")
-        print(Fore.RED + Style.BRIGHT)
-        typing(f"'Very well, {player.name.upper()}! Answer my riddle and\n"
-               "you may pass.'\n\n")
-        typing("'But fail, and you will be reduced to ash where you stand!'"
-               "\n")
-        print(Style.RESET_ALL)
-        typing("You try to move, but you seem to be frozen in place!\n\n")
-        typing(f"{player.name}: 'I guess I have no choice...'\n\n")
-        typing(f"{player.name}: 'What is your riddle?'\n")
-        print(Fore.RED + Style.BRIGHT)
-        typing("'Answer me this:'\n")
-        print(Style.RESET_ALL)
-    elif open_door.lower().strip() == "no":
-        typing(f"{player.name}: 'I think I preferred the other room...'\n\n")
-        typing("You decide to turn around and head back to the room with "
-               "pots.\n\n")
-        path_2()
-    else:
-        print("Please type Yes or No!")
-        door_choice()
-    return
-
-
-def pot_choice():
-    """
-    Asks the user for their input on whether they wish
-    to search the pots in path 2 and displays an output
-    depending on their choice.
-    """
-    choice = input("Put your hand in and search the pots? (Yes/No)\n")
-    if choice.lower().strip() == "yes":
-        typing("You put your hand into the pot...\n\n")
-        typing("It feels like your hand was somehow detached from your body."
-               "\n\n")
-        typing("Suddenly, you feel an odd, cold object!\n\n")
-        typing("You begin to pull...\n\n")
-        time.sleep(A)
-        typing("And a pitch black dagger comes out!\n\n")
-        typing(f"{player.name}: 'Whoa! It seems to absorb all the light\n"
-               "around it...'\n\n")
-        typing("You put the dagger in your bag.\n\n")
-        player.dagger = True
-    elif choice.lower().strip() == "no":
-        typing(f"{player.name}: 'I have a bad feeling about putting my hand\n"
-               "in those pots.'\n\n")
-        typing("You decide not to search the pots and carry on to the next "
-               "room.\n\n")
-    else:
-        print("Please type Yes or No!")
-        pot_choice()
-    return
-
-
-def troll_choice():
-    """
-    Asks the user for their input on what they wish
-    to do with the troll in path 4 and displays an
-    output depending on their choice.
-    """
-    if player.dagger:
-        choice = input("Choose an option: (1/2/3)\n")
-    else:
-        choice = input("Choose an option: (1/2)\n")
-    if choice.strip() == "1":
-        typing("You try to sneak around the troll.\n\n")
-        typing("As you get close, the troll begins to grumble...\n\n")
-        time.sleep(A)
-        sneak_chance = random.randrange(1, 5)
-        if sneak_chance > 3:
-            typing("You successfully sneak past the troll!\n\n")
-            typing(f"{player.name}: 'Phew! that was close!'\n\n")
-            typing("You continue on through the tomb.\n\n")
-            statue_room()
-        elif sneak_chance <= 3:
-            typing("You fail to sneak past the troll and it wakes up!\n\n")
-            typing("The troll grabs you and begins to eat you!\n\n")
-            death()
-    elif choice.strip() == "2":
-        typing("You attempt to pick up the large rock.\n\n")
-        typing("It's heavy but you manage to pick it up.\n\n")
-        typing("You lift the rock above your head and bring it down on the "
-               "troll!\n\n")
-        typing(f"{player.name}: 'Hiyah!'\n\n")
-        typing("The rock bounces off the troll without a scratch.\n\n")
-        typing("Suddenly, the troll wakes up!\n\n")
-        typing(f"{player.name}: 'Uh oh!'\n\n")
-        typing("The troll pummels you with his fist, leaving a bloody mess!"
-               "\n\n")
-        death()
-    elif choice.strip() == "3" and player.dagger:
-        typing("You take out the pitch black dagger...\n\n")
-        typing("You plunge the dagger into the skull of the troll!\n\n")
-        typing("The troll lets out a blood curdling cry before falling "
-               "silent.\n\n")
-        typing(f"{player.name}: 'Wow! I can't believe I did it!'\n\n")
-        typing("The black dagger shatters and is now useless.\n\n")
-        typing("You walk around the dead troll and continue on.\n\n")
-        statue_room()
-    else:
-        if player.dagger:
-            print("Please type 1, 2 or 3!")
-            troll_choice()
-        else:
-            print("Please type 1 or 2!")
-            troll_choice()
     return
 
 
@@ -636,32 +753,38 @@ def statue_choice():
            f"{random_select.weapons}.'\n\n")
     typing(f"{player.name}: 'What should I take from the table?'\n\n")
     weapon_choice = input("Axe, Sword or Bow?\n")
-    if (weapon_choice.lower().strip() == "axe" and
-            random_select.weapons == "Bow and Sword"):
-        typing("You take the Axe and put it on the statue...\n\n")
-    elif (weapon_choice.lower().strip() == "sword" and
-            random_select.weapons == "Bow and Axe"):
-        typing("You take the Sword and put it on the statue...\n\n")
-    elif (weapon_choice.lower().strip() == "bow" and
-            random_select.weapons == "Sword and Axe"):
-        typing("You take the Bow and put it on the statue...\n\n")
-    else:
-        if (weapon_choice.lower().strip() == "axe" or
-                weapon_choice.lower().strip() == "bow" or
-                weapon_choice.lower().strip() == "sword"):
-            typing(f"You take the {weapon_choice} and put it on the "
-                   "statue...\n\n")
-            typing("Nothing seems to happen...\n\n")
-            time.sleep(A)
-            typing("Suddenly, the statues come to life!\n\n")
-            typing(f"{player.name}: 'Oh no! I messed up!'\n\n")
-            typing("The statues get closer and you try to run...\n\n")
-            typing("You trip over on a piece of rock!\n\n")
-            typing("Everything fades to black as the sound of stone footsteps "
-                   "get closer...\n\n")
-            death()
-        print("Please enter Axe, Sword or Bow!")
-        statue_choice()
+
+    while True:
+        if (weapon_choice.lower().strip() == "axe" and
+                random_select.weapons == "Bow and Sword"):
+            typing("You take the Axe and put it on the statue...\n\n")
+            break
+        elif (weapon_choice.lower().strip() == "sword" and
+                random_select.weapons == "Bow and Axe"):
+            typing("You take the Sword and put it on the statue...\n\n")
+            break
+        elif (weapon_choice.lower().strip() == "bow" and
+                random_select.weapons == "Sword and Axe"):
+            typing("You take the Bow and put it on the statue...\n\n")
+            break
+        else:
+            if (weapon_choice.lower().strip() == "axe" or
+                    weapon_choice.lower().strip() == "bow" or
+                    weapon_choice.lower().strip() == "sword"):
+                typing(f"You take the {weapon_choice} and put it on the "
+                       "statue...\n\n")
+                typing("Nothing seems to happen...\n\n")
+                time.sleep(A)
+                typing("Suddenly, the statues come to life!\n\n")
+                typing(f"{player.name}: 'Oh no! I messed up!'\n\n")
+                typing("The statues get closer and you try to run...\n\n")
+                typing("You trip over on a piece of rock!\n\n")
+                typing("Everything fades to black as the sound of stone "
+                       "footsteps get closer...\n\n")
+                death()
+                break
+            else:
+                weapon_choice = input("Please enter Axe, Sword or Bow!\n")
     return
 
 
@@ -683,6 +806,28 @@ def key_room():
     key_choice()
     typing("You continue through the tomb to the next area.\n\n")
     chest_room()
+    return
+
+
+def key_choice():
+    """
+    Asks the player for input on taking the gold key.
+    Displays an outcome depending on their choice. Adds
+    the key to player inventory if they input yes.
+    """
+    key_take = input("Do you want to take the key? (Yes/No)\n")
+    if key_take.lower().strip() == "yes":
+        typing("You slowly reach forward for the key...\n\n")
+        typing("You carefully take the key from the pedestal.\n\n")
+        typing("You obtained a gold key!\n\n")
+        player.key = True
+    elif key_take.lower().strip() == "no":
+        typing(f"{player.name}: 'This could be a trap...\n"
+               "I think I'll leave it.'\n\n")
+        typing("You decide not to take the key.\n\n")
+    else:
+        print("Please type Yes or No!")
+        key_choice()
     return
 
 
@@ -730,27 +875,6 @@ def chest_room():
     return
 
 
-def key_choice():
-    """
-    Asks the player for input on taking the gold key.
-    Displays an outcome depending on their choice.
-    """
-    key_take = input("Do you want to take the key? (Yes/No)\n")
-    if key_take.lower().strip() == "yes":
-        typing("You slowly reach forward for the key...\n\n")
-        typing("You carefully take the key from the pedestal.\n\n")
-        typing("You obtained a gold key!\n\n")
-        player.key = True
-    elif key_take.lower().strip() == "no":
-        typing(f"{player.name}: 'This could be a trap...\n"
-               "I think I'll leave it.'\n\n")
-        typing("You decide not to take the key.\n\n")
-    else:
-        print("Please type Yes or No!")
-        key_choice()
-    return
-
-
 def chest_choice():
     """
     Asks the player for input on opening the chest in
@@ -760,6 +884,7 @@ def chest_choice():
     If no, runs the end_3 function.
     """
     open_chest = input("Try to open the chest? (Yes/No)\n")
+
     if open_chest.lower().strip() == "yes" and player.key is False:
         typing("You attempt to pick the lock on the chest...\n\n")
         typing("The mechanism feels ancient...\n\n")
@@ -801,7 +926,9 @@ def chest_choice():
 
 def escape_choice():
     """
-    Asks the user for input on escaping the tomb.
+    Asks the user for input on escaping the tomb. Displays
+    an outcome depending on their choice. If user chooses 1,
+    rolls a 1 in 3 chance of successfully escaping.
     """
     if player.secret:
         escape = input("Please select an option. (1/2/3)\n")
@@ -889,14 +1016,17 @@ def riddle_choice():
     """
     Displays the random riddle and gets input from
     the user, and checks the player answer against
-    the correct answer.
+    the correct answer. Displays an outcome depending
+    on if the answer is correct or not.
     """
     riddle = create_riddle()
     random_select.riddle = random.choice(riddle)
+
     print(Fore.CYAN)
     typing(random_select.riddle)
     print(Fore.RED + Style.BRIGHT)
     riddle_answer = input("'What am I?'\n")
+
     print(Style.RESET_ALL)
     if ("candle" in riddle_answer.lower().strip() and
             random_select.riddle == riddle[0]):
@@ -931,108 +1061,6 @@ def riddle_choice():
     return
 
 
-def ghost_choice():
-    """
-    Asks the user for input on approaching the ghost.
-    Displays an outcome depending on their choice.
-    """
-    approach_ghost = input("Approach the figure? (Yes/No)\n")
-    if approach_ghost.lower().strip() == "yes":
-        typing("You decide to approach the ominious figure...\n\n")
-        typing(f"{player.name}: 'Hello? Can you hear me?'\n")
-        print(Fore.MAGENTA + Style.BRIGHT)
-        typing(f"???: '{player.name} why have you come?'\n")
-        print(Style.RESET_ALL)
-        typing("You feel a chill as the figure speaks.\n\n")
-        typing(f"{player.name}: 'How do you know my name?'\n")
-        print(Fore.MAGENTA + Style.BRIGHT)
-        typing("???: 'I know the name of all who enter this tomb.'\n\n")
-        typing(f"???: 'Now Answer me {player.name}: Why have you come?'\n")
-        print(Style.RESET_ALL)
-        typing("You're unsure how this figure may react to you coming for the "
-               "treasure.\n\n")
-        truth_choice()
-    elif approach_ghost.lower().strip() == "no":
-        typing(f"{player.name}: 'I'll pretend I didn't see that.\n\n")
-        typing("You decide to continue your journey.\n\n")
-        typing("As you walk on, you begin to get colder and colder...\n\n")
-        typing("Your legs begin to seize in the freezing cold...\n\n")
-        typing("And you fall to the ground, unable to breathe.\n\n")
-        typing("You hear an ominious voice just before your senses fail.\n\n")
-        print(Fore.MAGENTA + Style.BRIGHT)
-        typing(f"???: 'You cannot escape fate {player.name}...'\n")
-        print(Style.RESET_ALL)
-        time.sleep(A)
-        death()
-    else:
-        print("Please type Yes or No!")
-        ghost_choice()
-    return
-
-
-def truth_choice():
-    """
-    Asks the user for input on telling the truth.
-    Displays an outcome depending on their choice.
-    """
-    tell_truth = input(f"{player.name}: 'Should I tell it the truth?'\n"
-                       "(Yes/No)\n")
-    if tell_truth.lower().strip() == "yes":
-        typing(f"{player.name}: 'I have come seeking the Treasure of Mazar.'"
-               "\n\n")
-        typing("The figure stares at you, making you feel more uneasy.\n")
-        print(Fore.MAGENTA + Style.BRIGHT)
-        typing(f"???: 'I sense truth in your words {player.name}.'\n\n")
-        typing("???: 'After all, that is the reason for all who come here."
-               "\n\n")
-        typing("???: 'My name is Arlay, and I was once the architect of this "
-               "tomb.'\n\n")
-        typing("Arlay: 'But I was killed here after its completion.'\n\n")
-        typing("Arlay: 'King Mazar betrayed me and cursed my soul to wander "
-               "here.'\n\n")
-        typing("Arlay: 'I have long awaited someone to make it this far.'\n\n")
-        typing(f"Arlay: 'You, {player.name}, are the only one who has.'\n\n")
-        typing("Arlay: 'Allow me to tell you the secret of this place.'\n\n")
-        typing("Arlay: 'So that you may find what you seek and leave "
-               "unharmed.'\n")
-        print(Style.RESET_ALL)
-        typing(f"{player.name}: 'Okay, but why help me?'\n")
-        print(Fore.MAGENTA + Style.BRIGHT)
-        typing("Arlay: 'So that I can have my revenge on King Mazar...'\n\n")
-        typing("Arlay: 'Listen closely.'\n\n")
-        typing("Arlay: 'When you take the treasure, the tomb is set to "
-               "collapse.'\n\n")
-        typing("Arlay: 'You can exit from where you came if you are lucky.'"
-               "\n\n")
-        typing("Arlay: 'But there is a secret exit in the treasure room.'\n\n")
-        typing("Arlay: 'Go through the secret exit and you will be safe.'\n")
-        print(Style.RESET_ALL)
-        typing("You make a note of the secret exit.\n\n")
-        player.secret = True
-        typing(f"{player.name}: 'Thank you Arlay. I won't let you down!'\n\n")
-    elif tell_truth.lower().strip() == "no":
-        typing(f"{player.name}: 'I am just exploring!'\n\n")
-        typing("The figure stares at you, and you feel a chill down your "
-               "spine.\n")
-        print(Fore.RED + Style.BRIGHT)
-        typing(f"???: 'LIES!'\n")
-        print(Style.RESET_ALL)
-        typing("The figure lets out a piercing scream, causing your ears to "
-               "ring.\n\n")
-        typing("You start feeling nauseous as the room starts to spin.\n\n")
-        typing("You collapse on the floor and hear a voice.\n\n")
-        print(Fore.MAGENTA + Style.BRIGHT)
-        typing(f"???: 'You are a fool {player.name}...\nLies do not get past "
-               "me.'\n")
-        print(Style.RESET_ALL)
-        time.sleep(A)
-        death()
-    else:
-        print("Please type Yes or No!")
-        truth_choice()
-    return
-
-
 def try_again():
     """
     Asks the user if they wish to play again and takes
@@ -1040,6 +1068,7 @@ def try_again():
     choose yes, and ends the game if they choose no.
     """
     play_again = input("Do you wish to play again? (Yes/No)\n")
+
     if play_again.lower().strip() == "yes":
         introduction()
     elif play_again.lower().strip() == "no":
