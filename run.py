@@ -54,6 +54,7 @@ def typing(text):
     """
     Prints text slowly in a typewriter style.
     """
+    # Used from tutorial on 101computing.net
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
@@ -606,6 +607,7 @@ def lava_choice():
         cross_lava = input("Choose an option (1/2/3)\n")
     else:
         cross_lava = input("How do you wish to get across? (1/2)\n")
+
     if cross_lava == "1":
         typing("You take the planks from the corner of the room.\n\n")
         typing("You build a bridge to the other side.\n\n")
@@ -816,6 +818,7 @@ def key_choice():
     the key to player inventory if they input yes.
     """
     key_take = input("Do you want to take the key? (Yes/No)\n")
+
     if key_take.lower().strip() == "yes":
         typing("You slowly reach forward for the key...\n\n")
         typing("You carefully take the key from the pedestal.\n\n")
