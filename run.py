@@ -44,6 +44,16 @@ class Random:
 random_select = Random('', '')
 
 
+def typing(text):
+    """
+    Prints text slowly in a typewriter style.
+    """
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.05)
+
+
 def introduction():
     """
     Opens the game with the title screen and introduction
@@ -55,11 +65,11 @@ def introduction():
     print()
     print(Fore.YELLOW + ascii_art.CHALICE)
     print()
-    print("Long ago, a powerful king named Mazar reigned undisputed.\n")
-    print("Until one day, he was betrayed by his son and his reign ended.\n")
-    print("Before his death, Mazar built a great tomb and stashed his most\n"
-          "prized treasure.\n")
-    print("It's wherabouts laid secret for untold years...\n")
+    typing("Long ago, a powerful king named Mazar reigned undisputed.\n\n")
+    typing("Until one day, he was betrayed by his son and his reign ended.\n")
+    typing("Before his death, Mazar built a great tomb and stashed his most\n"
+           "prized treasure.\n\n")
+    typing("It's wherabouts laid secret for untold years...\n")
     print("Until suddenly, rumours began to spread of its supposed "
           "location.\n")
     print("Many went in search for the great treasures within.\n")
@@ -73,7 +83,8 @@ def start_game():
     """
     Lets the user choose to start the game and enter
     their name before beginning. Sets the player values
-    to default.
+    to default. Sets a random weapon combo for the statue
+    room.
     """
     player.dagger = False
     player.key = False
