@@ -97,6 +97,7 @@ def start_game():
     their name before beginning. Sets the player values
     to default. Sets a random weapon combo for the statue
     room.
+    Asks the user if they wish to view the instructions.
     """
     player.dagger = False
     player.key = False
@@ -104,6 +105,29 @@ def start_game():
     player.secret = False
     weapon_combos = ['Sword and Axe', 'Bow and Sword', 'Bow and Axe']
     random_select.weapons = random.choice(weapon_combos)
+
+    instructions_choice = input("Do you wish to view the instructions? "
+                                "(Yes/No)\n")
+
+    if instructions_choice.lower().strip() == "yes":
+        print()
+        typing("Your goal is to enter the tomb and claim the Treasure of "
+               "Mazar.\n")
+        typing("You will have multiple paths to choose from during your "
+               "journey.\n")
+        typing("During your journey you may encounter challenges that you must"
+               " overcome.\n")
+        typing("Different paths will lead to different encounters.\n")
+        typing("Some encounters may provide you with useful items.\n")
+        typing("Use these to help you progress through the tomb.\n")
+        typing("Victory is never guaranteed, and you may need to get lucky.\n")
+        typing("Try to find all the endings, and good luck!\n\n")
+        time.sleep(B)
+    elif instructions_choice.lower().strip() == "no":
+        print("Okay! Good luck!\n")
+    else:
+        print("Please type Yes or No!")
+        start_game()
 
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
 
