@@ -109,12 +109,15 @@ def start_game():
 
     if start_choice.lower().strip() == "yes":
         player.name = input("What is your name?\n")
-        if len(player.name.strip()) > 0 and len(player.name.strip()) <= 30:
-            typing(f"Welcome {player.name}. Your adventure awaits!\n\n")
-            begin_adventure()
-        else:
-            print("Name must be more than 0 characters and no more than 30!")
-            start_game()
+        while True:
+            if len(player.name.strip()) > 0 and len(player.name.strip()) <= 30:
+                typing(f"Welcome {player.name}. Your adventure awaits!\n\n")
+                begin_adventure()
+                break
+            else:
+                print("Name must be more than 0 characters and no more than "
+                      "30!\n")
+                player.name = input("Please type a different name!\n")
     elif start_choice.lower().strip() == "no":
         typing("Very well... Please take your time.")
         time.sleep(C)
@@ -950,7 +953,7 @@ def escape_choice():
             typing(f"{player.name}: 'That must be the exit!'\n\n")
             typing("It seems that the doors to the tomb have fallen apart!"
                    "\n\n")
-            typing("You make a final styping to the exit...\n\n")
+            typing("You make a final sprint to the exit...\n\n")
             typing("And come out unscathed!\n\n")
         elif escape_chance <= 2:
             typing("You are struck by a piece of falling debris!\n\n")
