@@ -131,24 +131,27 @@ def start_game():
 
     start_choice = input("Are you ready to start your adventure? (Yes/No)\n")
 
-    if start_choice.lower().strip() == "yes":
-        player.name = input("What is your name?\n")
-        while True:
-            if len(player.name.strip()) > 0 and len(player.name.strip()) <= 30:
-                typing(f"Welcome {player.name}. Your adventure awaits!\n\n")
-                begin_adventure()
-                break
-            else:
-                print("Name must be more than 0 characters and no more than "
-                      "30!\n")
-                player.name = input("Please type a different name!\n")
-    elif start_choice.lower().strip() == "no":
-        typing("Very well... Please take your time.")
-        time.sleep(C)
-        introduction()
-    else:
-        print("Please type Yes or No!")
-        start_game()
+    while True:
+        if start_choice.lower().strip() == "yes":
+            player.name = input("What is your name?\n")
+            while True:
+                if (len(player.name.strip()) > 0 and
+                        len(player.name.strip()) <= 30):
+                    typing(f"Welcome {player.name}. Your adventure awaits!"
+                           "\n\n")
+                    begin_adventure()
+                    break
+                else:
+                    print("Name must be more than 0 characters and no more "
+                          "than 30!\n")
+                    player.name = input("Please type a different name!\n")
+        elif start_choice.lower().strip() == "no":
+            typing("Very well... Please take your time.")
+            time.sleep(C)
+            introduction()
+            break
+        else:
+            start_choice = input("Please type Yes or No!")
     return
 
 

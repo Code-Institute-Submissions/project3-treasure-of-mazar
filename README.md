@@ -99,6 +99,7 @@ I created the flow chart for the game using [Lucidchart](https://www.lucidchart.
     - The premise of the game is introduced and the user is asked if they wish to read the instructions.
 
 ![Introduction title](assets/images/intro-title.PNG)
+
 ![Introduction story](assets/images/intro-premise.PNG)
 
 - __Instructions__
@@ -112,6 +113,7 @@ I created the flow chart for the game using [Lucidchart](https://www.lucidchart.
     - The player name is also displayed when the player character talks.
 
 ![Name Choice](assets/images/player-name.PNG)
+
 ![Player Talks](assets/images/player-talk.PNG)
 
 - __Path choices__
@@ -124,17 +126,23 @@ I created the flow chart for the game using [Lucidchart](https://www.lucidchart.
     - Path 5 takes the player to a room with lava pits. This can be accessed from both Path 1 and Path 2.
 
 ![Path Choice](assets/images/path-choice.PNG)
+
 ![Path 1](assets/images/path1.PNG)
+
 ![Path 2](assets/images/path2.PNG)
-![Path 3](assets/images/countdown.webp)
+
+![Path 3](assets/images/path3.PNG)
+
 ![Path 4](assets/images/path4.PNG)
-![Path 5](assets/images/countdown.webp)
+
+![Path 5](assets/images/path5.PNG)
 
 - __Player items and attributes__
     - The player can find items and obtain attributes through the game to help them progress.
     - Items and attributes are single use and allow them a guaranteed pass in a room.
 
 ![Item Get](assets/images/item-obtain.PNG)
+
 ![Item lost](assets/images/item-loss.PNG)
 
 - __Random Elements__
@@ -144,6 +152,9 @@ I created the flow chart for the game using [Lucidchart](https://www.lucidchart.
     - Certain actions in the game are randomised and have a chance of failing or succeeding.
 
 ![Random weapons](assets/images/random-weapons.PNG)
+
+![Random riddle](assets/images/random-riddle.PNG)
+
 ![Random fail](assets/images/random-fail.PNG)
 
 - __Death Screen__
@@ -151,6 +162,21 @@ I created the flow chart for the game using [Lucidchart](https://www.lucidchart.
     - An option to try again is presented to the user.
 
 ![Death Screen](assets/images/death-screen.PNG)
+
+- __End Screens__
+    - There are a total of 4 endings in the game.
+    - Each ending displays a different end banner and title, and a different story sequence.
+
+![End Screen](assets/images/end-screen.PNG)
+
+- __Input Validation__
+    - All input is validated to check that it matches the options presented.
+    - If an input does not match the presented options, a statement is printed asking the user to enter their choice again.
+    - The users choice of name is also validated to make sure it is not too long or too short.
+
+![Input Validation](assets/images/input-validation.PNG)
+
+![Name Validation](assets/images/name-validation.PNG)
 
 ### Future Features
 
