@@ -1,7 +1,7 @@
 <h1 align="center">Treasure of Mazar</h1>
 
 ## Introduction
-Treasure of Mazar is a Python based text adventure game designed for a command line interface (CLI). In the Treasure of Mazar, the player must adventure through an ancient tomb to claim the fabled treasure within. There are multiple choices that the player can make to aid them in their adventure, with an element of randomness deciding whether they succeed or fail. The game is aimed at users who wish to play a simple and fun text adventure with multiple paths and endings based on user choice.
+Treasure of Mazar is a Python based text adventure game designed for a command line interface (CLI). In the Treasure of Mazar, the player must adventure through an ancient tomb to claim the fabled treasure within. There are multiple choices that the player can make to aid them in their adventure, including challenges such as riddles and puzzles. The game is aimed at users who wish to play a simple and fun text adventure with multiple paths and endings based on user choice.
 
 [The live site can be accessed here.](https://treasure-of-mazar.herokuapp.com/)
 
@@ -14,9 +14,8 @@ Treasure of Mazar is a Python based text adventure game designed for a command l
     - [Site Owner Goals](#site-owner-goals)
 2. [Design](#design)
     - [Colours](#colours)
-    - [Font Styles](#font-styles)
     - [Images](#images)
-    - [Wireframes](#wireframes)
+    - [Flow Chart](#flow-chart)
 3. [Features](#features)
     - [Existing Features](#existing-features)
     - [Future Features](#future-features)
@@ -36,88 +35,122 @@ Treasure of Mazar is a Python based text adventure game designed for a command l
 
 ### User Stories
 
-- As a new user, I want to be able to navigate through the site easily and quickly to find the game I want.
-- As a new user, I want the instructions on how to play the game to be clear and concise.
-- As a new user, I want the site to be responsive when played on smaller devices.
-- As a new user, I want the design of the site to be simple and appealing.
-- As a new user, I want to be able to type a variety of words to improve my typing skills.
-- As a returning user, I want to be able to see my previous high score for each game mode.
-- As a returning user, I want to be able to change the difficulty of the game to challenge myself.
+- As a new user, I want to be able to play a text adventure game.
+- As a new user, I want to know how to play the game.
+- As a new user, I want to play the game without any errors.
+- As a new user, I want the story to be enticing.
+- As a new user, I want to progress through the game easily.
+- As a returning user, I want to try different paths and decisions.
+- As a returning user, I want to get different endings.
 
 ### Site Owner Goals
 
-- As a site owner, I want to create a simple fun game to help improve typing skills.
-- As a site owner, I want to be able to store user high scores for returning use.
-- As a site owner, I want to provide an easy to navigate game that works with different devices.
-- As a site owner, I want to give users an option between different game modes.
-- As a site owner, I want the design of my site to be appealing but not distracting from the main content. 
+- As a site owner, I want to create a fun and simple text adventure game.
+- As a site owner, I want to be able give the user multiple options for progression.
+- As a site owner, I want the game to be easy to understand.
+- As a site owner, I want the game to be replayable.
+- As a site owner, I want the game to flow well from one scene to another. 
 
 ## Design
 
 ### Colours
-I tried to keep the colours simple for the site, with the main font colour set to white to contrast the darker background and make the main content stand out. I chose to distinguish the 2 game modes with different colours so that the user can easily identify which mode they are playing. Likewise, the different difficulties are represented by a traffic light style colour scheme to help the user identify the difficulty they are playing.
+I used mostly default colours of the CLI through the game as I didn't want to overwhelm or confuse the user with too much colour. However, I did use colours for the ASCII art and for when certain events happened, such as different characters speaking. This was done to draw the users attention to these areas and also differentiate them from the player's speech.
 
-![Colour pallete](assets/images/colour-pallete.webp)
+- __Examples:__
 
-### Font Styles
-As the site is based around a typing game, I wanted the main font style to be clear and easily readable for the user. For this I used Google Fonts to choose the 'Lato' font style for the main game section content. I also wanted the main heading to seem playful to represent a game. I used Google Fonts and chose the 'Potta One' style for this.
+![Yellow Chalice](assets/images/chalice.PNG)
+![Text colour](assets/images/color-difference.PNG)
 
-### Images
-Since the main purpose of the site is to play the typing game - I didn't want to overload the user with images, so I chose to only use a single image of a keyboard for the background of the site.
-
-### Wireframes
-I created the wireframes for this project using Balsamiq Wireframes.
+### Graphics
+I chose to include some ASCII art in the game to make it more appealing. This was done using a free ASCII generator from the website, [patorjk](https://patorjk.com) for text, and [asciiart](https://asciiart.club/) for images. I only chose to use the ASCII art for the introduction and death screen. This was because I didn't want to overwhelm users with graphics in a text based game, and feel that imagining the situations works better than displaying graphics.
 <details>
-<summary>Desktop</summary>
+<summary>Title</summary>
 
-![Desktop Wireframe](assets/images/desktop-wireframe.webp)
+![Title](assets/images/title.PNG)
 </details>
 
 <details>
-<summary>Mobile</summary>
+<summary>Chalice</summary>
 
-![Mobile Wireframe](assets/images/mobile-wireframe.webp)
+![Chalice](assets/images/chalice.PNG)
+</details>
+
+<details>
+<summary>Death</summary>
+
+![Death](assets/images/you-died.PNG)
+</details>
+
+### Flow Chart
+I created the flow chart for the game using [Lucidchart](https://www.lucidchart.com/pages/). This helped me to plan out the flow of the game and the amount of user input that I would need to include.
+<details>
+<summary>Flow Chart</summary>
+
+![Flow Chart](assets/images/project3-flowchart.PNG)
 </details>
 
 ## Features
 
 ### Existing Features
 
-- __Main Menu__
-    - This is the first page the user is met with when they load the site.
-    - It provides information that tells the user how to play the game and what the different game modes are.
-    - There are two buttons that take the user to the different game modes. 'Time Attack' loads the time attack game mode, and 'Countdown' loads the difficulty select menu for the countdown game mode.
+- __Introduction__
+    - This is the first thing the user is met with when they run the game.
+    - It provides a title of the game and a graphic of the treasure.
+    - The premise of the game is introduced and the user is asked if they wish to read the instructions.
 
-![Main Menu](assets/images/main-menu.webp)
+![Introduction title](assets/images/intro-title.PNG)
+![Introduction story](assets/images/intro-premise.PNG)
 
-- __Difficulty Select__
-    - From this menu, the user can choose between the 3 difficulty options for the 'Countdown' game.
-    - 3 large navigation buttons load the countdown game at a difficulty of the user's choice - Easy, Medium or Hard.
-    - A home button at the bottom of the page takes user's back to the main menu when clicked.
+- __Instructions__
+    - Before the game starts the user is asked if they wish to view the instructions.
+    - Displays instructions on how the game is played.
 
-![Difficulty Select](assets/images/difficulty-select.webp)
+![Instructions](assets/images/instructions.PNG)
 
-- __Time Attack Game__
-    - This is the game that is displayed when the user selects the 'time attack' button from the main menu.
-    - The game features a start button that will set the timer to 60 seconds, display a random word, enable the text input box, disable the button and set the score to 0.
-    - When the timer starts, it will begin to countdown by 1 second for 60 seconds until it reaches 0.
-    - While the timer is active, the user must type the word that is displayed above the input box to score 1 point. Everytime the words match, the word above the input box is randomised from an array of words.
-    - The high score is set when the user's score is greater than the high score value that is stored in local storage.
-    - When the timer reaches 0, the input box is disabled and the start button is enabled again.
-    - A home button at the bottom of the page will take the user back to the main menu.
+- __Name Choice__
+    - The player is asked to choose a name for their character, allowing the story to be more personalised.
+    - The player name is also displayed when the player character talks.
 
-![Time Attack](assets/images/time-attack.webp)
+![Name Choice](assets/images/player-name.PNG)
+![Player Talks](assets/images/player-talk.PNG)
 
-- __Countdown Game__
-    - This is the game that is displayed when the user selects 'countdown' from the main menu and chooses a difficulty.
-    - The basic features and functionality of this game are the same as the time attack game mode.
-    - Countdown starts the user with a limited amount of time depending on which difficulty they select. Easy starts with 8 seconds, Medium with 5, and Hard with 3.
-    - Each time the user matches their word to the random word, the current time on the timer is increased by 2 seconds.
-    - The timer will continue to countdown until it reaches 0, at which point the game ends. The user must therefore type as fast as possible to prevent the timer reaching 0.
-    - The game displays the difficulty the user is playing on just above their score.
-    - There are seperate high scores for each difficulty stored in local storage to prevent the user from overlapping their high score from a lower difficulty to a higher one.
+- __Path choices__
+    - There are 5 main paths that the player can choose to take.
+    - These paths are chosen when the player reaches a crossroad in the tomb.
+    - Path 1 takes the player to a room with a large door.
+    - Path 2 takes the player to a room filled with pots.
+    - Path 3 takes the player to a cold room with an ominous presence. This can only be accessed from Path 1.
+    - Path 4 takes the player to a room with a sleeping troll. This can only be accessed to path 2.
+    - Path 5 takes the player to a room with lava pits. This can be accessed from both Path 1 and Path 2.
 
-![Countdown](assets/images/countdown.webp)
+![Path Choice](assets/images/path-choice.PNG)
+![Path 1](assets/images/path1.PNG)
+![Path 2](assets/images/path2.PNG)
+![Path 3](assets/images/countdown.webp)
+![Path 4](assets/images/path4.PNG)
+![Path 5](assets/images/countdown.webp)
+
+- __Player items and attributes__
+    - The player can find items and obtain attributes through the game to help them progress.
+    - Items and attributes are single use and allow them a guaranteed pass in a room.
+
+![Item Get](assets/images/item-obtain.PNG)
+![Item lost](assets/images/item-loss.PNG)
+
+- __Random Elements__
+    - There are random elements in the game which can determine if a player wins or not.
+    - A statue room has randomised weapon combos from a list.
+    - The riddles for the door in path 1 are randomised from a list.
+    - Certain actions in the game are randomised and have a chance of failing or succeeding.
+
+![Random weapons](assets/images/random-weapons.PNG)
+![Random fail](assets/images/random-fail.PNG)
+
+- __Death Screen__
+    - When the player dies the death screen is displayed.
+    - An option to try again is presented to the user.
+
+![Death Screen](assets/images/death-screen.PNG)
 
 ### Future Features
 
