@@ -14,7 +14,7 @@ Treasure of Mazar is a Python based text adventure game designed for a command l
     - [Site Owner Goals](#site-owner-goals)
 2. [Design](#design)
     - [Colours](#colours)
-    - [Images](#images)
+    - [Graphics](#graphics)
     - [Flow Chart](#flow-chart)
 3. [Features](#features)
     - [Existing Features](#existing-features)
@@ -22,14 +22,12 @@ Treasure of Mazar is a Python based text adventure game designed for a command l
 4. [Technologies](#technologies)
 5. [Testing](#testing)
     - [Validator Testing](#validator-testing)
-    - [Feature Testing](#feature-testing)
-    - [Responsiveness](#responsiveness)
+    - [Manual Testing](#manual-testing)
+    - [Solved Bugs](#solved-bugs)
     - [Known Bugs](#known-bugs)
 6. [Deployment](#deployment)
-    - [Local Deployment](#local-deployment)
 7. [Credits](#credits)
     - [Content](#content)
-    - [Media](#media)
 
 ## Site Goals
 
@@ -166,6 +164,7 @@ I created the flow chart for the game using [Lucidchart](https://www.lucidchart.
 - __End Screens__
     - There are a total of 4 endings in the game.
     - Each ending displays a different end banner and title, and a different story sequence.
+    - The user is asked if they wish to try again after the ending banner.
 
 ![End Screen](assets/images/end-screen.PNG)
 
@@ -180,109 +179,194 @@ I created the flow chart for the game using [Lucidchart](https://www.lucidchart.
 
 ### Future Features
 
-- Game Sounds
-    - I feel that adding sounds to the game would be a good way to improve the user experience. For example, a chime sound could play when the user enters a correct answer which would give them audio feedback that they answered correctly. Also sounds could play when the timer is low to let the user know that they are running low on time.
+- More Paths
+    - I would like to expand the game further by adding more paths for the user to choose from. This would increase replayability and increase the potential of keeping users interested in the game.
 
-- Leaderboards
-    - I would like to add a leaderboard which keeps a record of high scores and allows the user to enter their name to display ther score in the leaderboard. This could make the game more attractive to competetive players who wish to aim for the highest spot on the leaderboard.
+- Health and combat system
+    - A health and combat system could help to make the game more fun to play. This would allow me to introduce rooms with monsters that the user can fight and could make the current random system more functional.
 
-- Game start on typing
-    - I would like to make the game start when the user starts to type in the text box rather than using a start button. This would make starting the game more fluid as the user can just use their keyboard to start the game, rather than clicking on a button.
+- More user choice
+    - I would like to add more user choices during encounters in the tomb. This would allow the user more freedom and greater options during their playthrough and could encourage users to replay and try different options.
 
 ## Technologies
 
-- HTML5 - Used for the structure and content of my web pages.
-- CSS3 - Used for the styling of pages.
-- JavaScript - Used to implement the interactive features of the site and create the main functionality of the game.
-- [Font Awesome](https://fontawesome.com/) - For the timer icon used in the games.
-- [Google fonts](https://fonts.google.com/) - Used to choose the fonts for my site.
-- [favicon.io](https://favicon.io/) - Used to create the favicon for the site.
+- Python 3.8.10 - Used as the main language for the code.
+- Heroku - Used for deployment.
 - [Gitpod](https://www.gitpod.io/) - Used as my code editor.
-- [GitHub](https://github.com/) - Used for deploying and hosting my site.
+- [GitHub](https://github.com/) - Used as repository and version control.
+- [Lucidchart](https://www.lucidchart.com/pages/) - Used to create flow chart.
+- [patrojk](https://patorjk.com) - Used to create the title and death ASCII art text.
+- [asciiart](https://asciiart.club/) - Used to create the chalice ASCII art.
 
 ## Testing
 
 ### Validator Testing
 
-- HTML
-    - No errors displayed when checking with the W3C markup validation service.
+- PEP8 Validator
+    - I used the [PEP8 online checker](http://pep8online.com/) to check for errors in my files and none were found.
 
-![HTML validation](assets/images/html-validation.webp)
+![PEP8 run.py check](assets/images/pep8-check-run.PNG)
 
-- CSS
-    - No errors displayed when checking with the W3C CSS validation service.
+![PEP8 ascii_art.py check](assets/images/pep8-check-ascii.PNG)
 
-![CSS validation](assets/images/css-validation.webp)
+### Manual Testing
 
-- Google Lighthouse
-    - Google lighthouse gave the site a score of 100 for all categories except performance, which was shown as 90 for mobile and 99 for desktop.
+I manually tested each aspect of the game to ensure that it functioned correctly. The following details the procedures I took to test the game and the result:
 
-![Lighthouse desktop](assets/images/lighthouse-check-desktop.webp)
+- Introduction function is called and introduction sequence plays when program is run? -> YES
+- Typewriter style text display works correctly? -> YES
+- User is asked if they wish to view the instructions? -> YES
+- User input for instruction choice works correctly? -> YES
+- Instructions display correctly? -> YES
+- User is asked if they wish to begin? -> YES
+- User input for begin choice works correctly? -> YES
+- User is asked to enter their name? -> YES
+- User input for their name works correctly? -> YES
+- User name is set correctly? -> YES
+- User values are set to default and random weapons are chosen correctly? -> YES
 
-![Lighthouse mobile](assets/images/lighthouse-check-mobile.webp)
+<br>
 
-- JSHint
-    - JSHint only displayed one warning about declaring functions in loops, but this is required in the project to enable the buttons to operate correctly.
+- Tomb area story is displayed correctly? -> YES
+- User location is set correctly? -> YES
+- User is asked if they wish to enter the tomb? -> YES
+- User input for enter choice works correctly? -> YES
+- User is asked what path they wish to take? -> YES
+- User input for path choice works correctly? -> YES
 
-![JSHint validation](assets/images/jshint-validation.PNG)
+<br>
 
-### Feature Testing
+- Path 1 story is displayed correctly? -> YES
+- User location is set correctly? -> YES
+- User is asked if they wish to open the door? -> YES
+- User input for door choice works correctly? -> YES
+- Riddle is randomised correctly? -> YES
+- Riddle answer works correctly? -> YES
+- Player blessing set correctly? -> YES
+- Path choice called correctly? -> YES
 
-- Buttons
-    - I tested that all buttons operate as they should, by repeatedly clicking them, refreshing the page and clicking again and trying on different devices. I tested that the 'start' button would disable until the user finishes the current game before it is enabled again.
+<br>
 
-- Timer
-    - I tested the timer by running the game and checking its initial value was set. I then checked that it decremented every second and would stop at 0. I would run the game multiple times to check that it performed this function every time. I also used the menu button to return to the main menu and then checked the game again to see if the timer had stopped. I tested that the different game modes and difficulty displayed the correct starting time.
+- Path 2 story displayed correctly? -> YES
+- User location set correctly? -> YES
+- User asked if they wish to search the pots? -> YES
+- User input for pot choice works correctly? -> YES
+- Player knife set correctly? -> YES
+- Path choice called correctly? -> YES
 
-- Score
-    - I tested that the score would increase whenever the user typed a word correctly. I made sure that everytime the user starts a new game, the score would set to 0. I checked that the score would set to 0 when the user left the game and that it would not break if they left before the game finished. I checked that the high score was being correctly set when the user score was higher than the value in local storage. I checked that the high score for each game mode was being set to the high score for the specific mode and difficulty in local storage. I checked that the high score would be set to 0 if no previous records of the high score were present.
+<br>
 
-- Increase timer in countdown
-    - I tested that the timer increases by 2 seconds whenever the user score increases in countdown. I tested this for each difficulty.
+- Path 3 story displayed correctly? -> YES
+- User asked if they wish to approach figure? -> YES
+- User input for ghost choice work correctly? -> YES
+- User asked if they wish to tell truth? -> YES
+- User input for truth choice work correctly? -> YES
+- Player secret set correctly? -> YES
+- Feast room called correctly? -> YES
 
-- Words randomise
-    - I tested that a new word is displayed randomly whenever the user plays the game. I tested that a correct match between the user input and random word would clear the user input box and randomise the word again. I tested that a new random word is displayed whenever the user loads the game or refreshes the page.
+<br>
 
-### Responsiveness
+- Path 4 story displayed correctly? -> YES
+- User asked how they wish to deal with troll? -> YES
+- User given extra input if holding knife? -> YES
+- User input for troll choice works correctly? -> YES
+- Random chance on troll choice works correctly? -> YES
+- User loses knife if used? -> YES
+- Statue room called correctly? -> YES
 
-- To test my site for responsiveness on different screen sizes I used Mozilla Firefox and Google Chrome Dev tools to emulate different size viewports. The smallest viewport size that I tested my site on was 320x480.
-- I tested in both portrait and landscape modes to ensure that the site functioned as intended when in different view modes.
-- My personal device (Samsung Galaxy S20 Ultra 5G) was also used in both portrait and landscape modes to test the site.
+<br>
+
+- Path 5 story displayed correctly? -> YES
+- User asked how they wish to cross lava? -> YES
+- User input for lava choice work correctly? -> YES
+- User given extra input if blessing True? -> YES
+- User loses blessing if used? -> YES
+- Random chance on lava choice works correctly? -> YES
+- Feast room called correctly? -> YES
+
+<br>
+
+- Statue room story displayed correctly? -> YES
+- Random weapon combo works correctly? -> YES
+- User asked to choose weapon? -> YES
+- User input for statue choice work correctly? -> YES
+- Key room called correctly? -> YES
+
+<br>
+
+- Key room story displayed correctly? -> YES
+- User asked if they wish to take key? -> YES
+- User input for key choice works correctly? -> YES
+- Player Key is set to true if taken? -> YES
+- Chest room called correctly? -> YES
+
+<br>
+
+- Feast room story displayed correctly? -> YES
+- Player blessing checked correctly? -> YES
+- Food choice skipped if player has blessing? -> YES
+- User asked to choose a food to eat? -> YES
+- User input for food choice works correctly? -> YES
+- Random chance on food choice works correctly? -> YES
+- User asked if they wish to keep eating? -> YES
+- User input for eating choice works correctly? -> YES
+- Player blessing is lost? -> YES
+- Chest room is called correctly? -> YES
+
+<br>
+
+- Chest room story displayed correctly? -> YES
+- Player key checked correctly? -> YES
+- User asked if they wish to open chest? -> YES
+- User input for chest choice works correctly? -> YES
+- Guaranteed success to open if user has key? -> YES
+- Player loses key on chest open? -> YES
+- Random chance on chest choice works correctly? -> YES
+- Player secret checked correctly? -> YES
+- User asked how they wish to escape? -> YES
+- User input for escape choice works correctly? -> YES
+- Additional user input given if player secret true? -> YES
+- Random chance on escape choice works correctly? -> YES
+- End 4 called correctly? -> YES
+
+<br>
+
+- All endings called correctly? -> YES
+- Try again called correctly? -> YES
+- Death called correctly? -> YES
+- User input for Try again works correctly? -> YES
+- User prompted to enter input again on all invalid entries? -> YES
+
+### Solved Bugs
+
+- Sometimes the input requests from different paths would randomly pop up when restarting the game and running it again. I managed to solve this by adding a Return statement at the end of functions.
+- The random weapon combos for the statue room were not randomising again when pressing try again. I resolved this by randomising them at the start of the game.
 
 ### Known Bugs
 
-- When clicking the start button on mobile devices the #btn-start:hover styles do not correctly get deselected when the button is disabled, causing them to be active until the user clicks somewhere else on the page.
+- One known bug is that when entering input in the terminal when it is not requested, the next input check will return invalid and ask the player to enter their input again. This can also break the typing sequence when the story is being told, causing it to become unreadable. 
 
 ## Deployment
 
-I deployed my site to GitHub pages using the following steps:
-  1. Select project2_speedy_typer from my GitHub dashboard, navigate to the Settings tab 
-  2. From the 'Code and automation' left menu, select pages
-  3. From the source section select the main branch in the drop down menu, select save
-  4. Once the main branch has been saved, the GitHub pages section will display a message saying that the site is ready to be published at https://jackday94.github.io/project2_speedy_typer/
-  5. After waiting for a few minutes and refreshing the page, GitHub pages will now display a messaging saying 'Your site is published at https://jackday94.github.io/project2_speedy_typer/'
-  6. The site is now deployed and can be viewed using the provided link
-
-### Local Deployment
-
-To deploy my project locally the following steps can be used:
-1. Navigate to my Github account and locate and select the 'project2_speedy_typer' repository 
-2. At the top of the repository, next to the green Gitpod button, select the 'code' button
-3. Download the ZIP file of the repository
-4. When the ZIP file has finished downloading, extract the contents to a relevant folder on your device
-5. The website can then be run locally on your device
+I deployed my site to Heroku with Code Institute's Python terminal using the following steps:
+  1. Create and sign into an account on [Heroku.com](https://www.heroku.com/)
+  2. Select 'Create a New app' and choose a name for your app
+  3. Select your region and then click 'Create app'
+  4. Go to the 'Settings' tab and click 'Reveal config vars'
+  5. In the 'KEY' field add 'PORT' and in the 'VALUE' field add '8000' and click 'add'
+  6. Click 'Add buildpack' and choose 'Python' and save, and then do the same with 'Node'
+  7. Go to the 'Deploy' tab and connect your github account
+  8. Search for your project repository and click 'connect'
+  9. From 'Automatic Deploys' you can choose to setup automatic deploys so that everytime code pushed to github, Heroku will rebuild the app
+  10. From 'Manual Deploy' Select the branch you wish to deploy and then click 'Deploy Branch'
+  11. When Heroku has finished building the app, a link will be provided to open the app
 
 ## Credits
 
 ### Content
 
-- Instructions on handling the DOM content and event listeners were taken from [Code Institute course material](https://codeinstitute.net/)
-- The clock icon for the timer was obtained from [Font Awesome](https://fontawesome.com/)
-- Information for various elements in HTML, CSS and JS and how to use them were often taken from [W3Schools](https://www.w3schools.com/)
-- Information on how to store and get values from local storage were taken from [stackoverflow](https://stackoverflow.com/questions/29370017/adding-a-high-score-to-local-storage)
-- JavaScript tutorials and tricks on how to implement a game were obtained from useful guides on the youtube channel [Traversy Media](https://www.youtube.com/c/TraversyMedia)
-
-### Media
-- The background image of the site was taking from the free stock photo library [Pexels](https://www.pexels.com/)
-- The favicon for the site was generated using [favicon.io](https://favicon.io/)
-- To find colours that contrasted well with each other and give me the look for my site that I was after, I used [Coolors](https://coolors.co/)
+- [Code Institute course material](https://codeinstitute.net/)
+- Tutorials on how to use colorama by [Tech With Tim](https://www.youtube.com/watch?v=u51Zjlnui4Y)
+- Information for how to use various variables and elements by [W3Schools](https://www.w3schools.com/)
+- Typing text effect code by [101Computing](https://www.101computing.net/python-typing-text-effect/)
+- ASCII art converters by [asciiart](https://asciiart.club/) and [patrojk](https://patorjk.com)
